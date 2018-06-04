@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ubuntu," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="1、普通 dpkg 用法dpkg -i 安装一个Debian包裹文件，如你手动下载的文件。   dpkg -c 列出的内容。   dpkg -I 从中提取包裹信息。   dpkg -r 移除一个已安装的包裹。   dpkg -L 列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。   dpkg -P   完全清除一个已安装的包裹。和 remove 不同的是，re">
+<meta name="keywords" content="ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="apt-get dpkg命令的用法">
+<meta property="og:url" content="http://yoursite.com/2018/06/04/apt-get-dpkg命令的用法/index.html">
+<meta property="og:site_name" content="InnovatorZhang&#39;s blog">
+<meta property="og:description" content="1、普通 dpkg 用法dpkg -i 安装一个Debian包裹文件，如你手动下载的文件。   dpkg -c 列出的内容。   dpkg -I 从中提取包裹信息。   dpkg -r 移除一个已安装的包裹。   dpkg -L 列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。   dpkg -P   完全清除一个已安装的包裹。和 remove 不同的是，re">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-04T03:53:00.504Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="apt-get dpkg命令的用法">
+<meta name="twitter:description" content="1、普通 dpkg 用法dpkg -i 安装一个Debian包裹文件，如你手动下载的文件。   dpkg -c 列出的内容。   dpkg -I 从中提取包裹信息。   dpkg -r 移除一个已安装的包裹。   dpkg -L 列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。   dpkg -P   完全清除一个已安装的包裹。和 remove 不同的是，re">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/04/apt-get-dpkg命令的用法/"/>
+
+
+
+
+
+  <title>apt-get dpkg命令的用法 | InnovatorZhang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">InnovatorZhang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Sakura</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/04/apt-get-dpkg命令的用法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZZH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="InnovatorZhang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">apt-get dpkg命令的用法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-04T11:42:35+08:00">
+                2018-06-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="1、普通-dpkg-用法"><a href="#1、普通-dpkg-用法" class="headerlink" title="1、普通 dpkg 用法"></a>1、普通 dpkg 用法</h2><pre><code>dpkg -i 安装一个Debian包裹文件，如你手动下载的文件。 
+
+dpkg -c 列出的内容。 
+
+dpkg -I 从中提取包裹信息。 
+
+dpkg -r 移除一个已安装的包裹。 
+
+dpkg -L 列出 安装的所有文件清单。同时请看 dpkg -c 来检查一个 .deb 文件的内容。 
+
+dpkg -P 
+
+完全清除一个已安装的包裹。和 remove 不同的是，remove 只是删掉数据和可执行文件，purge 另外还删除所有的配制文件。 
+
+dpkg -s 
+
+显示已安装包裹的信息。同时请看 apt-cache 显示 Debian 存档中的包裹信息，以及 dpkg -I 来显示从一个 .deb 文件中提取的包裹信息。 
+</code></pre><h4 id="比如想自己装gedit："><a href="#比如想自己装gedit：" class="headerlink" title="比如想自己装gedit："></a>比如想自己装gedit：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -i gedit-2.12.1.deb</span><br></pre></td></tr></table></figure>
+<p>卸载：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -r gedit</span><br></pre></td></tr></table></figure></p>
+<h4 id="这里只写名字即可。还可以加上–purge-P-标志："><a href="#这里只写名字即可。还可以加上–purge-P-标志：" class="headerlink" title="这里只写名字即可。还可以加上–purge(-P)标志："></a>这里只写名字即可。还可以加上–purge(-P)标志：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -P gedit</span><br></pre></td></tr></table></figure>
+<pre><code>这会连同gedit的配置文件一起删除，只用-r的话是不删除配置文件的。
+如果不想安装一个deb包，但想看一下它里面有什么文件：
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -c gedit-2.12.1.deb</span><br></pre></td></tr></table></figure>
+<h4 id="如果想多看点信息："><a href="#如果想多看点信息：" class="headerlink" title="如果想多看点信息："></a>如果想多看点信息：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -I gedit-2.12.1.deb</span><br></pre></td></tr></table></figure>
+<h4 id="也可以用通配符来列出机器上的软件："><a href="#也可以用通配符来列出机器上的软件：" class="headerlink" title="也可以用通配符来列出机器上的软件："></a>也可以用通配符来列出机器上的软件：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l gcc*</span><br><span class="line"></span><br><span class="line">这会列出所有gcc开头的软件包：</span><br><span class="line">Desired=Unknown/Install/Remove/Purge/Hold</span><br><span class="line">Status=Not/Installed/Config-files/Unpacked/Failed-config/.</span><br><span class="line">/ Err?=(none)/Hold/Reinst-required/X=both-problems</span><br><span class="line">/ Name Version Description</span><br><span class="line">+++-===============-==============-========================</span><br><span class="line">ii gcc 4.0.1-3 The GNU C compiler</span><br><span class="line">ii gcc-3.3-base 3.3.6-8ubuntu1 The GNU Compiler Colletio</span><br><span class="line">un gcc-3.5 none (no description available)</span><br><span class="line">其中，第1个 i 表示希望安装，第2个 i 表示已经安装，第3个字段是问题（如果有）</span><br><span class="line">这3个字的含义可以看上面那3行，desired, status, err），后面是名字，版本和描述。un就表示，Unknown, not-installed。</span><br></pre></td></tr></table></figure>
+<h4 id="如果想看某包是否已经安装："><a href="#如果想看某包是否已经安装：" class="headerlink" title="如果想看某包是否已经安装："></a>如果想看某包是否已经安装：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dpkg -s gedit</span><br><span class="line">如果想看某软件都有哪些文件，都装到了什么地方：</span><br><span class="line">dpkg -L gedit</span><br><span class="line">如果只想看其中的某些文件，就加上Grep：</span><br><span class="line">dpkg -L gedit grep png</span><br><span class="line">当然还有aptitude和Aptitude，前者是终端上运行的带菜单的工具，后者是X窗口上运行的图形化的程序。</span><br><span class="line">还有，列出某包的详情：apt-cache show gedit</span><br><span class="line">一些强制的命令：dpkg --force-help</span><br><span class="line">（在InstallWay/aptHOWTO中）</span><br></pre></td></tr></table></figure>
+<h3 id="关于源码安装："><a href="#关于源码安装：" class="headerlink" title="关于源码安装："></a>关于源码安装：</h3><pre><code>下载后的源码包需要编译后再安装
+基本流程：解压-&gt;configure-&gt;make-&gt;make install（具体可以看各个软件的README文件会介绍安装事宜，
+（在InstallWay/Configure参数选项详解中有configure相关）
+</code></pre><h2 id="2、apt-get命令"><a href="#2、apt-get命令" class="headerlink" title="2、apt-get命令"></a>2、apt-get命令</h2><pre><code>apt-get  update：在修改/etc/apt/sources.list或者/etc/apt/preferences之后运行该命令。此外您需要定期运行这一命令以确保您的软件包列表是最新的。
+apt-get install packagename：安装一个新软件包
+apt-get remove packagename：卸载一个已安装的软件包（保留配置文件）
+apt-get remove package - - purge 删除包，包括删除配置文件等 
+apt-get clean：这个命令会把安装的软件的备份也删除，不过这样不会影响软件的使用的。
+apt-get upgrade：更新所有已安装的软件包
+apt-get dist-upgrade：将系统升级到新版本
+apt-cache search package 搜索包 
+apt-cache show package 获取包的相关信息，如说明、大小、版本等 
+apt-get install package - - reinstall 重新安装包  
+apt-get -f install 修复安装&quot;-f = ——fix-missing&quot; 
+apt-get install build-essential 配置c/c++ compile环境  
+apt-cache depends package 了解使用依赖 
+apt-cache rdepends package 是查看该包被哪些包依赖 
+apt-get build-dep package 安装相关的编译环境 
+apt-get source package 下载该包的源代码 
+apt-get check 检查是否有损坏的依赖
+apt-get autoclean：定期运行这个命令来清除那些已经卸载的软件包的.deb文件。 
+apt-get autoremove :自动清除不需要的程序包。
+</code></pre>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/29/关于shadowsocks的安装与使用/" rel="next" title="关于shadowsocks的安装与使用">
+                <i class="fa fa-chevron-left"></i> 关于shadowsocks的安装与使用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZZH</p>
+              <p class="site-description motion-element" itemprop="description">希望能将学习的知识写在这上面</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、普通-dpkg-用法"><span class="nav-number">1.</span> <span class="nav-text">1、普通 dpkg 用法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#比如想自己装gedit："><span class="nav-number">1.0.1.</span> <span class="nav-text">比如想自己装gedit：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#这里只写名字即可。还可以加上–purge-P-标志："><span class="nav-number">1.0.2.</span> <span class="nav-text">这里只写名字即可。还可以加上–purge(-P)标志：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果想多看点信息："><span class="nav-number">1.0.3.</span> <span class="nav-text">如果想多看点信息：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#也可以用通配符来列出机器上的软件："><span class="nav-number">1.0.4.</span> <span class="nav-text">也可以用通配符来列出机器上的软件：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如果想看某包是否已经安装："><span class="nav-number">1.0.5.</span> <span class="nav-text">如果想看某包是否已经安装：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于源码安装："><span class="nav-number">1.1.</span> <span class="nav-text">关于源码安装：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、apt-get命令"><span class="nav-number">2.</span> <span class="nav-text">2、apt-get命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZZH</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
