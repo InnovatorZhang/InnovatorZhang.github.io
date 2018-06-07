@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo的使用," />
+  <meta name="keywords" content="java学习," />
 
 
 
@@ -79,21 +79,20 @@
 
 
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="hexo的使用">
+<meta name="description" content="建造者模式概念 将复杂对象的构造和表示分开，是的同样的步骤可以创建不同的表示(对象) 解析一个复杂的表示(对象)，封装对象的构造过程。(将建造复杂对下岗的过程和组成对象的不见解耦)  UML图 应用场景 需要生成的产品对象有复杂的内部结构，这些产品对象具备共性； 隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同的产品。  优缺点优点 易于解耦将产品本身与产品的创建过程进行解耦，可以使用相">
+<meta name="keywords" content="java学习">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HEXO的一些用法">
-<meta property="og:url" content="http://yoursite.com/2018/05/26/hello-world/index.html">
+<meta property="og:title" content="设计模式之建造者模式">
+<meta property="og:url" content="http://yoursite.com/2018/06/07/设计模式之建造者模式/index.html">
 <meta property="og:site_name" content="InnovatorZhang&#39;s blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="建造者模式概念 将复杂对象的构造和表示分开，是的同样的步骤可以创建不同的表示(对象) 解析一个复杂的表示(对象)，封装对象的构造过程。(将建造复杂对下岗的过程和组成对象的不见解耦)  UML图 应用场景 需要生成的产品对象有复杂的内部结构，这些产品对象具备共性； 隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同的产品。  优缺点优点 易于解耦将产品本身与产品的创建过程进行解耦，可以使用相">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/cat.gif">
-<meta property="og:image" content="http://yoursite.com/images/avatar.gif">
-<meta property="og:updated_time" content="2018-06-04T13:31:38.278Z">
+<meta property="og:image" content="http://yoursite.com/images/java/builder.jpg">
+<meta property="og:updated_time" content="2018-06-07T15:41:38.100Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HEXO的一些用法">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="twitter:image" content="http://yoursite.com/images/cat.gif">
+<meta name="twitter:title" content="设计模式之建造者模式">
+<meta name="twitter:description" content="建造者模式概念 将复杂对象的构造和表示分开，是的同样的步骤可以创建不同的表示(对象) 解析一个复杂的表示(对象)，封装对象的构造过程。(将建造复杂对下岗的过程和组成对象的不见解耦)  UML图 应用场景 需要生成的产品对象有复杂的内部结构，这些产品对象具备共性； 隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同的产品。  优缺点优点 易于解耦将产品本身与产品的创建过程进行解耦，可以使用相">
+<meta name="twitter:image" content="http://yoursite.com/images/java/builder.jpg">
 
 
 
@@ -123,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/26/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/07/设计模式之建造者模式/"/>
 
 
 
 
 
-  <title>HEXO的一些用法 | InnovatorZhang's blog</title>
+  <title>设计模式之建造者模式 | InnovatorZhang's blog</title>
   
 
 
@@ -236,7 +235,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/设计模式之建造者模式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZZH">
@@ -253,7 +252,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HEXO的一些用法</h1>
+          <h1 class="post-title" itemprop="name headline">设计模式之建造者模式</h1>
         
 
         <div class="post-meta">
@@ -265,8 +264,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-26T16:55:10+08:00">
-                2018-05-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-07T22:23:35+08:00">
+                2018-06-07
               </time>
             
 
@@ -303,21 +302,30 @@
       
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<p>image1(目录为source/images):<img src="/images/cat.gif" alt="cat1"><br>image2:(目录为.deploy_git/images)<img src="/images/avatar.gif" alt="cat2"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式为:![cat1](/images/cat.gif)和![cat2](/images/avatar.gif)</span><br></pre></td></tr></table></figure>
-<p><code>以上用的是相同的格式引用图片,说明图片在这两个目录都可以用相同的方法引用</code></p>
-<h3 id="试一下引用站内文章"><a href="#试一下引用站内文章" class="headerlink" title="试一下引用站内文章"></a>试一下引用站内文章</h3><a href="/2018/06/04/JAVA的设计模式总览/" title="JAVA的设计模式总览">JAVA的设计模式总览</a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式为:&#123;% post_link JAVA的设计模式总览 %&#125;</span><br></pre></td></tr></table></figure>
-<p><code>以上是引用站内文章的方式</code></p>
+        <h1 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><ul>
+<li>将复杂对象的构造和表示分开，是的同样的步骤可以创建不同的表示(对象)</li>
+<li>解析一个复杂的表示(对象)，封装对象的构造过程。(将建造复杂对下岗的过程和组成对象的不见解耦)</li>
+</ul>
+<h2 id="UML图"><a href="#UML图" class="headerlink" title="UML图"></a>UML图</h2><p><img src="/images/java/builder.jpg" alt="建造者模式"></p>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><ul>
+<li>需要生成的产品对象有复杂的内部结构，这些产品对象具备共性；</li>
+<li>隔离复杂对象的创建和使用，并使得相同的创建过程可以创建不同的产品。</li>
+</ul>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li><p>易于解耦<br>将产品本身与产品的创建过程进行解耦，可以使用相同的创建过程来得到不同的产品，细节依赖抽象</p>
+</li>
+<li><p>易于控制对象的创建<br>将复杂产品的创建步骤分解，使创建过程更加清晰</p>
+</li>
+<li><p>扩展性好(易于扩展)<br>增加新的具体建造者(Builder)无需修改原来类库的代码，易于扩展，符合”开闭原则”</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">每一个具体建造者都相对独立，而与其他的具体建造者无关，因此可以很方便地替换具体建造者或</span><br><span class="line">增加新的具体建造者，用户使用不同的具体建造者即可得到不同的产品对象。</span><br></pre></td></tr></table></figure>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ul>
+<li><p>建造者模式所创建的产品一般具有较多的共同点，其组成部分相似；如果产品之间的差异性很大，<br>则不适合使用建造者模式，因此其使用范围受到一定的限制。</p>
+</li>
+<li><p>如果产品的内部变化复杂，可能会导致需要定义很多具体建造者类来实现这种变化，<br>导致系统变得很庞大。</p>
+</li>
+</ul>
 
       
     </div>
@@ -335,7 +343,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo的使用/" rel="tag"># hexo的使用</a>
+            <a href="/tags/java学习/" rel="tag"># java学习</a>
           
         </div>
       
@@ -348,15 +356,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/06/06/设计模式之抽象工厂模式/" rel="next" title="设计模式之抽象工厂模式">
+                <i class="fa fa-chevron-left"></i> 设计模式之抽象工厂模式
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/28/关于java中socket的简单应用/" rel="prev" title="关于java中socket的简单应用">
-                关于java中socket的简单应用 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -479,7 +487,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#试一下引用站内文章"><span class="nav-number">1.5.</span> <span class="nav-text">试一下引用站内文章</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#建造者模式"><span class="nav-number">1.</span> <span class="nav-text">建造者模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML图"><span class="nav-number">1.2.</span> <span class="nav-text">UML图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用场景"><span class="nav-number">1.3.</span> <span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">1.4.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.4.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.4.2.</span> <span class="nav-text">缺点</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
