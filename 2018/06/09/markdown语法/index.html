@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="markdown," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="MarkDown语法示例参照的blog:README由于hexo搭建的blog和github上有点不兼容，所以显示出了问题请移步MARKDOWN 目录 标题 分割线 文本 普通文本 文本块 文字高亮 文本换行 字体   图片 链接 文字链接 图片链接   列表 无序列表 有序列表 复选框列表   块引用 一级块引用 多级块引用   代码语法自动排版 锚点 表格  标题语法123456# 一级标题#">
+<meta name="keywords" content="markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown语法">
+<meta property="og:url" content="http://yoursite.com/2018/06/09/markdown语法/index.html">
+<meta property="og:site_name" content="InnovatorZhang&#39;s blog">
+<meta property="og:description" content="MarkDown语法示例参照的blog:README由于hexo搭建的blog和github上有点不兼容，所以显示出了问题请移步MARKDOWN 目录 标题 分割线 文本 普通文本 文本块 文字高亮 文本换行 字体   图片 链接 文字链接 图片链接   列表 无序列表 有序列表 复选框列表   块引用 一级块引用 多级块引用   代码语法自动排版 锚点 表格  标题语法123456# 一级标题#">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/09/markdown语法/URL%20title">
+<meta property="og:image" content="https://innovatorzhang.github.io/images/cat.gif">
+<meta property="og:image" content="http://yoursite.com/images/one.gif">
+<meta property="og:image" content="http://yoursite.com/images/two.jpg">
+<meta property="og:image" content="https://innovatorzhang.github.io/images/cat.gif">
+<meta property="og:image" content="https://innovatorzhang.github.io/images/cat.gif">
+<meta property="og:updated_time" content="2018-06-08T17:27:25.725Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="markdown语法">
+<meta name="twitter:description" content="MarkDown语法示例参照的blog:README由于hexo搭建的blog和github上有点不兼容，所以显示出了问题请移步MARKDOWN 目录 标题 分割线 文本 普通文本 文本块 文字高亮 文本换行 字体   图片 链接 文字链接 图片链接   列表 无序列表 有序列表 复选框列表   块引用 一级块引用 多级块引用   代码语法自动排版 锚点 表格  标题语法123456# 一级标题#">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/09/markdown语法/URL%20title">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/09/markdown语法/"/>
+
+
+
+
+
+  <title>markdown语法 | InnovatorZhang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">InnovatorZhang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Sakura</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/09/markdown语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZZH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="InnovatorZhang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">markdown语法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-09T01:15:08+08:00">
+                2018-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="MarkDown语法示例"><a href="#MarkDown语法示例" class="headerlink" title="MarkDown语法示例"></a>MarkDown语法示例</h1><p>参照的blog:<a href="https://github.com/guodongxiaren/README" target="_blank" rel="noopener">README</a><br>由于hexo搭建的blog和github上有点不兼容，所以显示出了问题请移步<a href="https://github.com/InnovatorZhang/MARKDOWN/blob/master/markdown.md" target="_blank" rel="noopener">MARKDOWN</a></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#标题">标题</a></li>
+<li><a href="#分割线">分割线</a></li>
+<li><a href="#文本">文本</a><ul>
+<li><a href="#普通文本">普通文本</a></li>
+<li><a href="#文本块">文本块</a></li>
+<li><a href="#文字高亮">文字高亮</a></li>
+<li><a href="#文本换行">文本换行</a></li>
+<li><a href="#字体">字体</a></li>
+</ul>
+</li>
+<li><a href="#图片">图片</a></li>
+<li><a href="#链接">链接</a><ul>
+<li><a href="#文字链接">文字链接</a></li>
+<li><a href="#图片链接">图片链接</a></li>
+</ul>
+</li>
+<li><a href="#列表">列表</a><ul>
+<li><a href="#无序列表">无序列表</a></li>
+<li><a href="#有序列表">有序列表</a></li>
+<li><a href="#复选框列表">复选框列表</a></li>
+</ul>
+</li>
+<li><a href="#块引用">块引用</a><ul>
+<li><a href="#一级块引用">一级块引用</a></li>
+<li><a href="#多级块引用">多级块引用</a></li>
+</ul>
+</li>
+<li><a href="#代码语法自动排版">代码语法自动排版</a></li>
+<li><a href="#锚点">锚点</a></li>
+<li><a href="#表格">表格</a></li>
+</ul>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 一级标题</span><br><span class="line">## 二级标题</span><br><span class="line">### 三级标题</span><br><span class="line">#### 四级标题</span><br><span class="line">##### 五级标题</span><br><span class="line">###### 六级标题</span><br></pre></td></tr></table></figure>
+<p>tips:<strong>最多六级</strong></p>
+<h3 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h3><h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题"><a href="#三级标题" class="headerlink" title="三级标题"></a>三级标题</h3><h4 id="四级标题"><a href="#四级标题" class="headerlink" title="四级标题"></a>四级标题</h4><h5 id="五级标题"><a href="#五级标题" class="headerlink" title="五级标题"></a>五级标题</h5><h6 id="六级标题"><a href="#六级标题" class="headerlink" title="六级标题"></a>六级标题</h6><h2 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h2><h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">*************</span><br><span class="line">-------------</span><br><span class="line">=============</span><br></pre></td></tr></table></figure>
+<h3 id="效果-1"><a href="#效果-1" class="headerlink" title="效果"></a>效果</h3><p>***看我下面</p>
+<hr>
+<h2 id="—看我下面"><a href="#—看我下面" class="headerlink" title="—看我下面"></a>—看我下面</h2><h1 id="看我下面"><a href="#看我下面" class="headerlink" title="===看我下面"></a>===看我下面</h1><h2 id="文本"><a href="#文本" class="headerlink" title="文本"></a>文本</h2><h3 id="普通文本"><a href="#普通文本" class="headerlink" title="普通文本"></a>普通文本</h3><p>这是一段普通的文本，没什么特殊的语法</p>
+<h3 id="文本块"><a href="#文本块" class="headerlink" title="文本块"></a>文本块</h3><h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">如果在行前加入四个空格或者一个tab的话就会变成这样</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">当然，如果有很多行的话</span><br><span class="line">就在每一行前面加上四个空格课一个tab</span><br><span class="line">一样的效果</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">```如果你在文本的前后各加上三个反引号，就是键盘左边靠近1键的那个键,也是一样的效果哦！</span><br><span class="line">注意，这三个反引号不要和文本在同一行，否则没有效果，应该将此示例的反引号各占一排</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 效果</span><br><span class="line"></span><br><span class="line">    如果在行前加入四个空格或者一个tab的话就会变成这样</span><br><span class="line">    </span><br><span class="line">*******************************************************</span><br><span class="line"></span><br><span class="line">    当然，如果有很多行的话</span><br><span class="line">    就在每一行前面加上四个空格课一个tab</span><br><span class="line">    一样的效果</span><br></pre></td></tr></table></figure>
+<p>如果你在文本的前后各加上三个反引号，就是键盘左边靠近1键的那个键,也是一样的效果哦！<br>注意，这三个反引号不要和文本在同一行，否则没有效果，应该将此示例的反引号各占一排<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 文字高亮</span><br><span class="line"></span><br><span class="line">#### 语法</span><br></pre></td></tr></table></figure></p>
+<p><code>我告诉</code> <code>你们</code> <code>我</code> <code>亮了</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 效果</span><br><span class="line"></span><br><span class="line">`我告诉` `你们` `我` `亮了`</span><br><span class="line"></span><br><span class="line">### 文本换行</span><br><span class="line"></span><br><span class="line">#### 语法</span><br></pre></td></tr></table></figure></p>
+<p>我一开始写这个markdown语法的时候就有个疑问[space][space]<br>这TM怎么换行啊！为什么全堆到一行上面去了啊！[space][space]<br>现在我告诉你哦！[space][space]<br>只要你在上一行后面添加两个额外的空格就可以了[space][space]<br>或者你直接在你要换行的文本之间补上一行的空行<br>  //我其实是代表的空行哦！加了双斜杠程序员看不见<br>也可以哦！不过这个间距有那么一点夸张，推荐第一个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 效果</span><br><span class="line"></span><br><span class="line">我一开始写这个markdown语法的时候就有个疑问  </span><br><span class="line">这TM怎么换行啊！为什么全堆到一行上面去了啊！  </span><br><span class="line">现在我告诉你哦！  </span><br><span class="line">只要你在上一行后面添加两个额外的空格就可以了  </span><br><span class="line">或者你直接在你要换行的文本之间补上一行的空行</span><br><span class="line"></span><br><span class="line">也可以哦！不过这个间距有那么一点夸张，推荐第一个方法</span><br><span class="line"></span><br><span class="line">### 字体</span><br><span class="line"></span><br><span class="line">|字体|写法|效果|</span><br><span class="line">|----|----|---|</span><br><span class="line">|斜体|`*斜体语法一号*`|*斜体语法一号*|</span><br><span class="line">|斜体|`_斜体语法二号_`|_斜体语法二号_|</span><br><span class="line">|粗体|`**我是粗体我很粗**`|**我是粗体我很粗**|</span><br><span class="line">|粗体|`__我也是粗体我也粗__`|__我也是粗体我也粗__|</span><br><span class="line">|删除线|`~~在下是删除线~~`|~~在下是删除线~~|</span><br><span class="line">|斜粗体|`***斜粗体一号***`|***斜粗体一号***|</span><br><span class="line">|斜粗体|`___斜粗体二号___`|___斜粗体二号___|</span><br><span class="line">|斜粗体加删除线一号|`***~~斜粗体加删除线1~~***`|***~~斜粗体加删除线1~~***|</span><br><span class="line">|斜粗体加删除线二号|`~~***斜粗体加删除线2***~~`|~~***斜粗体加删除线2***~~|</span><br><span class="line"></span><br><span class="line">tips:`斜体` `粗体` `删除线` 可以组合使用，组合服用风味更佳</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 图片</span><br><span class="line"></span><br><span class="line">### 语法</span><br></pre></td></tr></table></figure></p>
+<p><img src="URL title" alt="alt"></p>
+<p>参数的意义：<br>alt:当图片加载失败时显示的文本(可省略)<br>URL:图片的地址(不可省略，URL你都省略了，那加载什么啊！),可以是绝对地址或是相对地址<br>title:鼠标悬停时显示的文本(可省略)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>示例:<br><img src="https://innovatorzhang.github.io/images/cat.gif" alt="绝对地址"><br><img src="/images/one.gif" alt="相对地址"><br><img src="/images/two.jpg" alt="高级写法" title="SB证"> SB在文档最后定义，这里后面那个是方括号哦！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">`最后一种写法SB在文档最后有定义:[SB]:/images/two.jpg &quot;SB证&quot;`</span><br><span class="line"></span><br><span class="line">### 效果</span><br><span class="line"></span><br><span class="line">示例:</span><br><span class="line">![绝对地址](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)</span><br><span class="line">![相对地址](/images/one.gif &quot;睿智&quot;)</span><br><span class="line">![高级写法][SB]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 链接</span><br><span class="line"></span><br><span class="line">### 文字链接</span><br><span class="line"></span><br><span class="line">|名称|语法|效果|</span><br><span class="line">|---|----|---|</span><br><span class="line">|我的微博|`[微博](https://weibo.com/u/5746068346?refer_flag=1001030101_&amp;is_all=1 &quot;我的微博&quot;)`|[微博](https://weibo.com/u/5746068346?refer_flag=1001030101_&amp;is_all=1 &quot;我的微博&quot;)|</span><br><span class="line">|微博写法二|`[微博][weibo]`|[微博][weibo]|</span><br><span class="line">|我的知乎|`[知乎][zhihu]`|[知乎][zhihu]|</span><br><span class="line">|我的博客|`[博客][blog]`|[博客][blog]|</span><br><span class="line">|相对地址|`[使用相对地址](/blogs/关于ss的使用.md)`|[使用相对地址](/blogs/关于ss的使用.md)|</span><br></pre></td></tr></table></figure></p>
+<p>可以看出你可以使用 <a href=""></a> 的语法直接给出URL,也可以使用定义的方法定义一个URL，以后用[][]的方式使用<br>相当于是一个变量，方便以后的使用。<br>上面那个微博的效果是一样的。<br>比如：在文档末尾定义了<br><a href="https://innovatorzhang.github.io" title="我的博客" target="_blank" rel="noopener">blog</a>:<a href="https://innovatorzhang.github.io" target="_blank" rel="noopener">https://innovatorzhang.github.io</a> “我的博客”<br>之后，以后要使用这个URL只需要<a href="https://innovatorzhang.github.io" title="我的博客" target="_blank" rel="noopener">blog</a>就行了，减少了很多的重复。<br>相对地址的使用同理。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 图片链接</span><br><span class="line"></span><br><span class="line">    有文字链接的话，当然也有图片链接啊！这在平常的网页中十分常见</span><br><span class="line">    这里介绍一下图片链接的语法</span><br><span class="line">    </span><br><span class="line">|名称|语法|效果</span><br><span class="line">|---|----|---</span><br><span class="line">|链接到知乎0|`[![cat]][zhihu]`|[![cat]][zhihu]</span><br><span class="line">|链接知乎1|`[![miao](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)][zhihu]`|[![miao](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)][zhihu]</span><br><span class="line">|链接知乎2|`[![miao](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)](https://www.zhihu.com/people/zhang-zhong-hao-62 &quot;我的知乎&quot;)`|[![miao](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)](https://www.zhihu.com/people/zhang-zhong-hao-62 &quot;我的知乎&quot;)</span><br></pre></td></tr></table></figure></p>
+<p>通过上面的实例说明一下其实基础还是 <a href=""></a> 这个格式<br>用图片实现链接其实就是将 [] 里面的提示字符用引入图片的语法改成了图片<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">## 列表</span><br><span class="line"></span><br><span class="line">### 无序列表</span><br><span class="line"></span><br><span class="line">#### 一级无序列表</span><br><span class="line"></span><br><span class="line">##### 语法</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>我是老大</li>
+<li>我是老二</li>
+<li>我是老幺</li>
+</ul>
+<p>在这里吧 * 换成 - 没有影响<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 效果</span><br><span class="line"></span><br><span class="line">* 我是老大</span><br><span class="line">* 我是老二</span><br><span class="line">* 我是老幺</span><br><span class="line"></span><br><span class="line">#### 多级无序列表</span><br><span class="line"></span><br><span class="line">##### 语法</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>我是一级的<ul>
+<li>我是二级的<ul>
+<li>为什么我是最低级的啊<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">tips:`这里每一级四个空格`</span><br><span class="line"></span><br><span class="line">##### 效果</span><br><span class="line"></span><br><span class="line">- 我是一级的</span><br><span class="line">    - 我是二级的</span><br><span class="line">        - 为什么我是最低级的啊</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 有序列表</span><br><span class="line"></span><br><span class="line">#### 一级有序列表</span><br><span class="line"></span><br><span class="line">##### 语法</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>一号种子选手</li>
+<li>二号种子选手</li>
+<li>三号种子选手</li>
+</ol>
+<p>格式:数字 加 . 加 空格 加 列表内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">##### 效果</span><br><span class="line"></span><br><span class="line">1. 一号种子选手</span><br><span class="line">2. 二号种子选手</span><br><span class="line">3. 三号种子选手</span><br><span class="line"></span><br><span class="line">#### 多级有序列表</span><br><span class="line"></span><br><span class="line">##### 语法</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>这是一级的有序列表，数字1还是1</li>
+<li>这是一级的有序列表，数字1还是1<ol>
+<li>这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字</li>
+<li>这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字<ol>
+<li>这是三级的有序列表，数字在显示的时候变成了英文字母</li>
+<li>这是三级的有序列表，数字在显示的时候变成了英文字母<ol>
+<li>四级的有序列表显示效果，就不再变化了，依旧是英文字母</li>
+<li>四级的有序列表显示效果，就不再变化了，依旧是英文字母</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<p>每一级之间隔四个空格或者一个tab<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">##### 效果</span><br><span class="line"></span><br><span class="line">1. 这是一级的有序列表，数字1还是1</span><br><span class="line">1. 这是一级的有序列表，数字1还是1</span><br><span class="line">    1. 这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字</span><br><span class="line">    1. 这是二级的有序列表，阿拉伯数字在显示的时候变成了罗马数字</span><br><span class="line">        1. 这是三级的有序列表，数字在显示的时候变成了英文字母</span><br><span class="line">        1. 这是三级的有序列表，数字在显示的时候变成了英文字母</span><br><span class="line">	        1. 四级的有序列表显示效果，就不再变化了，依旧是英文字母</span><br><span class="line">	        1. 四级的有序列表显示效果，就不再变化了，依旧是英文字母</span><br><span class="line">	      </span><br><span class="line">	      </span><br><span class="line"></span><br><span class="line">### 复选框列表</span><br><span class="line"></span><br><span class="line">#### 语法</span><br></pre></td></tr></table></figure></p>
+<p>（华中科技大学，2005）程序正在试图读取某个磁盘的第100个逻辑块，使用操作系统提供的（  ）接口</p>
+<ul>
+<li style="list-style: none"><input type="checkbox" checked> 系统调用</li>
+<li style="list-style: none"><input type="checkbox"> 图形用户</li>
+<li style="list-style: none"><input type="checkbox"> 原语</li>
+<li style="list-style: none"><input type="checkbox"> 键盘命令<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 效果</span><br><span class="line"></span><br><span class="line">（华中科技大学，2005）程序正在试图读取某个磁盘的第100个逻辑块，使用操作系统提供的（  ）接口</span><br><span class="line">- [x] 系统调用</span><br><span class="line">- [ ] 图形用户</span><br><span class="line">- [ ] 原语</span><br><span class="line">- [ ] 键盘命令</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 块引用</span><br><span class="line"></span><br><span class="line">### 一级块引用</span><br><span class="line"></span><br><span class="line">#### 语法</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以下文字摘自wiki百科的设计模式</p>
+<blockquote>
+<p>设计模式并不直接用来完成代码的编写，而是描述在各种不同情况下，<br>要怎么解决问题的一种方案。面向对象设计模式通常以类别或对象来描述<br>其中的关系和相互作用，但不涉及用来完成应用程序的特定类别或对象。<br>设计模式能使不稳定依赖于相对稳定、具体依赖于相对抽象，<br>避免会引起麻烦的紧耦合，以增强软件设计面对并适应变化的能力。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#### 效果</span><br><span class="line"></span><br><span class="line">以下文字摘自wiki百科的设计模式</span><br><span class="line">&gt;设计模式并不直接用来完成代码的编写，而是描述在各种不同情况下，  </span><br><span class="line">要怎么解决问题的一种方案。面向对象设计模式通常以类别或对象来描述  </span><br><span class="line">其中的关系和相互作用，但不涉及用来完成应用程序的特定类别或对象。  </span><br><span class="line">设计模式能使不稳定依赖于相对稳定、具体依赖于相对抽象，  </span><br><span class="line">避免会引起麻烦的紧耦合，以增强软件设计面对并适应变化的能力。</span><br><span class="line"></span><br><span class="line">### 多级块引用</span><br><span class="line"></span><br><span class="line">#### 语法</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>在下是一级引用，吊不吊</p>
+<blockquote>
+<p>我二级引用不服</p>
+<blockquote>
+<p>三级引用不说话</p>
+<blockquote>
+<p>四级引用很害怕</p>
+<blockquote>
+<p>五级引用哈哈哈<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#### 效果</span><br><span class="line"></span><br><span class="line">&gt;在下是一级引用，吊不吊</span><br><span class="line">&gt;&gt;我二级引用不服</span><br><span class="line">&gt;&gt;&gt;三级引用不说话</span><br><span class="line">&gt;&gt;&gt;&gt;四级引用很害怕</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;五级引用哈哈哈</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 代码语法自动排版</span><br><span class="line"></span><br><span class="line">### 语法</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>编程语言的开始加上三个反引号，反引号后面跟变成语言的名字，最后三个反引号结尾<br>注意:反引号和代码不要在同一排哦</p>
+<p>例:<figure class="highlight java"><figcaption><span>这里面放代码 ```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">例:```c 这里面放代码</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">### 效果</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">public class Father&#123;</span><br><span class="line">    public static void main(String args[])&#123;</span><br><span class="line">        System.out.println(&quot;hello world!!!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span>(<span class="meta-string">"stdio.h"</span>)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"hello world!!!"</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h2><h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">没有最左边和最右边的|</span><br><span class="line">表头1  | 表头2</span><br><span class="line">--------- | --------</span><br><span class="line">表格单元  | 表格单元 </span><br><span class="line">表格单元  | 表格单元 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">有最左边和最右边的|</span><br><span class="line">| 表头1  | 表头2|</span><br><span class="line">| ---------- | -----------|</span><br><span class="line">| 表格单元   | 表格单元   |</span><br><span class="line">| 表格单元   | 表格单元   |</span><br><span class="line"></span><br><span class="line">有没有最左边的最右边的|一样的效果</span><br><span class="line"></span><br><span class="line">可以指定对齐方式</span><br><span class="line">| 左对齐 | 居中  | 右对齐 |</span><br><span class="line">| :------------ |:---------------:| -----:|</span><br><span class="line">| col 3 is      | some wordy text | $1600 |</span><br><span class="line">| col 2 is      | centered        |   $12 |</span><br><span class="line">| zebra stripes | are neat        |    $1 |</span><br><span class="line"></span><br><span class="line">可以混合斜体、粗体、删除线使用</span><br><span class="line">| 名字 | 描述          |</span><br><span class="line">| ------------- | ----------- |</span><br><span class="line">| Help      | **~~Display the~~** help window.|</span><br><span class="line">| Close     | _Closes_ a window     |</span><br><span class="line"></span><br><span class="line">还可以在表格中加图片和链接</span><br><span class="line">|名称|语法|效果|</span><br><span class="line">|---|----|---|</span><br><span class="line">|我的知乎|`[知乎][zhihu]`|[知乎][zhihu]|</span><br><span class="line">|我的博客|`[博客][blog]`|[博客][blog]|</span><br><span class="line">|相对地址|`[使用相对地址](/blogs/关于ss的使用.md)`|[使用相对地址](/blogs/关于ss的使用.md)|</span><br><span class="line">|链接到知乎0|`[![cat]][zhihu]`|[![cat]][zhihu]</span><br><span class="line">|链接知乎1|`[![miao](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)][zhihu]`|[![miao](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)][zhihu]</span><br></pre></td></tr></table></figure>
+<h3 id="效果-2"><a href="#效果-2" class="headerlink" title="效果"></a>效果</h3><p><code>没有最左边和最右边的|</code>  </p>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表格单元</td>
+<td>表格单元 </td>
+</tr>
+<tr>
+<td>表格单元</td>
+<td>表格单元 </td>
+</tr>
+</tbody>
+</table>
+<p><code>有最左边和最右边的|</code>  </p>
+<table>
+<thead>
+<tr>
+<th>表头1</th>
+<th>表头2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>表格单元</td>
+<td>表格单元</td>
+</tr>
+<tr>
+<td>表格单元</td>
+<td>表格单元</td>
+</tr>
+</tbody>
+</table>
+<p><code>有没有最左边的最右边的|一样的效果</code></p>
+<p><code>可以指定对齐方式</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">左对齐</th>
+<th style="text-align:center">居中</th>
+<th style="text-align:right">右对齐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">col 3 is</td>
+<td style="text-align:center">some wordy text</td>
+<td style="text-align:right">$1600</td>
+</tr>
+<tr>
+<td style="text-align:left">col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
+</tr>
+<tr>
+<td style="text-align:left">zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
+</tr>
+</tbody>
+</table>
+<p><code>可以混合斜体、粗体、删除线使用</code></p>
+<table>
+<thead>
+<tr>
+<th>名字</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Help</td>
+<td><strong><del>Display the</del></strong> help window.</td>
+</tr>
+<tr>
+<td>Close</td>
+<td><em>Closes</em> a window</td>
+</tr>
+</tbody>
+</table>
+<p><code>还可以在表格中加图片和链接</code></p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>语法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我的知乎</td>
+<td><code>[知乎][zhihu]</code></td>
+<td><a href="https://www.zhihu.com/people/zhang-zhong-hao-62" title="我的知乎" target="_blank" rel="noopener">知乎</a></td>
+</tr>
+<tr>
+<td>我的博客</td>
+<td><code>[博客][blog]</code></td>
+<td><a href="https://innovatorzhang.github.io" title="我的博客" target="_blank" rel="noopener">博客</a></td>
+</tr>
+<tr>
+<td>相对地址</td>
+<td><code>[使用相对地址](/blogs/关于ss的使用.md)</code></td>
+<td><a href="/blogs/关于ss的使用.md">使用相对地址</a></td>
+</tr>
+<tr>
+<td>链接到知乎0</td>
+<td><code>[![cat]][zhihu]</code></td>
+<td><a href="https://www.zhihu.com/people/zhang-zhong-hao-62" title="我的知乎" target="_blank" rel="noopener"><img src="https://innovatorzhang.github.io/images/cat.gif" alt="cat" title="MiniCat"></a></td>
+</tr>
+<tr>
+<td>链接知乎1</td>
+<td><code>[![miao](https://innovatorzhang.github.io/images/cat.gif &quot;MiniCat&quot;)][zhihu]</code></td>
+<td><a href="https://www.zhihu.com/people/zhang-zhong-hao-62" title="我的知乎" target="_blank" rel="noopener"><img src="https://innovatorzhang.github.io/images/cat.gif" alt="miao" title="MiniCat"></a></td>
+</tr>
+</tbody>
+</table>
+<h2 id="锚点"><a href="#锚点" class="headerlink" title="锚点"></a>锚点</h2><h3 id="语法-4"><a href="#语法-4" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[alt](#anchor)</span><br><span class="line"></span><br><span class="line">alt:显示出的文字，类似文字链接</span><br><span class="line">anchor：就是标题，和html中的锚点类似</span><br><span class="line"></span><br><span class="line">例如：[回到顶部](#MarkDown语法示例)</span><br><span class="line">就可以回到顶部</span><br><span class="line">* [标题](#标题)</span><br><span class="line">* [分割线](#分割线)</span><br><span class="line">* [文本](#文本)</span><br><span class="line">分别到对应的地点</span><br></pre></td></tr></table></figure>
+<h3 id="效果-3"><a href="#效果-3" class="headerlink" title="效果"></a>效果</h3><ul>
+<li><a href="#MarkDown语法示例">回到顶部</a></li>
+<li><a href="#标题">标题</a></li>
+<li><a href="#分割线">分割线</a></li>
+<li><a href="#文本">文本</a><h2 id="表情"><a href="#表情" class="headerlink" title="表情"></a>表情</h2></li>
+</ul>
+<p>tips:<code>只有GitHub支持哦!</code></p>
+<h3 id="语法-5"><a href="#语法-5" class="headerlink" title="语法"></a>语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:blush: :kissing: :hushed:</span><br></pre></td></tr></table></figure>
+<h3 id="效果-4"><a href="#效果-4" class="headerlink" title="效果"></a>效果</h3><p>:blush: :kissing: :hushed:</p>
+<p><a href="http://www.emoji-cheat-sheet.com" target="_blank" rel="noopener">符号码官方网页</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/markdown/" rel="tag"># markdown</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/07/设计模式之建造者模式/" rel="next" title="设计模式之建造者模式">
+                <i class="fa fa-chevron-left"></i> 设计模式之建造者模式
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZZH</p>
+              <p class="site-description motion-element" itemprop="description">希望能将学习的知识写在这上面</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MarkDown语法示例"><span class="nav-number">1.</span> <span class="nav-text">MarkDown语法示例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标题"><span class="nav-number">1.2.</span> <span class="nav-text">标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法"><span class="nav-number">1.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果"><span class="nav-number">1.2.2.</span> <span class="nav-text">效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一级标题"><span class="nav-number">2.</span> <span class="nav-text">一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#二级标题"><span class="nav-number">2.1.</span> <span class="nav-text">二级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#三级标题"><span class="nav-number">2.1.1.</span> <span class="nav-text">三级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#四级标题"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">四级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#五级标题"><span class="nav-number">2.1.1.1.1.</span> <span class="nav-text">五级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#六级标题"><span class="nav-number">2.1.1.1.1.1.</span> <span class="nav-text">六级标题</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分割线"><span class="nav-number">2.2.</span> <span class="nav-text">分割线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-1"><span class="nav-number">2.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果-1"><span class="nav-number">2.2.2.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#—看我下面"><span class="nav-number">2.3.</span> <span class="nav-text">—看我下面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#看我下面"><span class="nav-number">3.</span> <span class="nav-text">===看我下面</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#文本"><span class="nav-number">3.1.</span> <span class="nav-text">文本</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#普通文本"><span class="nav-number">3.1.1.</span> <span class="nav-text">普通文本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#文本块"><span class="nav-number">3.1.2.</span> <span class="nav-text">文本块</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#语法-2"><span class="nav-number">3.1.2.1.</span> <span class="nav-text">语法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表格"><span class="nav-number">3.2.</span> <span class="nav-text">表格</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-3"><span class="nav-number">3.2.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果-2"><span class="nav-number">3.2.2.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锚点"><span class="nav-number">3.3.</span> <span class="nav-text">锚点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-4"><span class="nav-number">3.3.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果-3"><span class="nav-number">3.3.2.</span> <span class="nav-text">效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表情"><span class="nav-number">3.4.</span> <span class="nav-text">表情</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#语法-5"><span class="nav-number">3.4.1.</span> <span class="nav-text">语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#效果-4"><span class="nav-number">3.4.2.</span> <span class="nav-text">效果</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZZH</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
