@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="ubuntu," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="重装ubuntu的原因本来第一次用标准的流程装的lamp(liunx,apache,mysql,php)装的好好的然后我就在捣鼓python2和python3的pip兼容的问题，弄了半天越弄越糟糕我就想着先把python3卸载了再重装，说不定就没问题了呢！我真的机智！ 然后。。。。 悲剧了，当我卸载python3的过程中我就看见我在ubuntu上面装的软件图标一个一个的再消失啊！！！没办法！我还是">
+<meta name="keywords" content="ubuntu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于ubuntu上安装mysql">
+<meta property="og:url" content="http://yoursite.com/2018/06/11/关于ubuntu上安装mysql/index.html">
+<meta property="og:site_name" content="InnovatorZhang&#39;s blog">
+<meta property="og:description" content="重装ubuntu的原因本来第一次用标准的流程装的lamp(liunx,apache,mysql,php)装的好好的然后我就在捣鼓python2和python3的pip兼容的问题，弄了半天越弄越糟糕我就想着先把python3卸载了再重装，说不定就没问题了呢！我真的机智！ 然后。。。。 悲剧了，当我卸载python3的过程中我就看见我在ubuntu上面装的软件图标一个一个的再消失啊！！！没办法！我还是">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-06-11T11:02:04.776Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于ubuntu上安装mysql">
+<meta name="twitter:description" content="重装ubuntu的原因本来第一次用标准的流程装的lamp(liunx,apache,mysql,php)装的好好的然后我就在捣鼓python2和python3的pip兼容的问题，弄了半天越弄越糟糕我就想着先把python3卸载了再重装，说不定就没问题了呢！我真的机智！ 然后。。。。 悲剧了，当我卸载python3的过程中我就看见我在ubuntu上面装的软件图标一个一个的再消失啊！！！没办法！我还是">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/11/关于ubuntu上安装mysql/"/>
+
+
+
+
+
+  <title>关于ubuntu上安装mysql | InnovatorZhang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">InnovatorZhang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Sakura</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/11/关于ubuntu上安装mysql/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZZH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="InnovatorZhang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于ubuntu上安装mysql</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-11T18:09:19+08:00">
+                2018-06-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="重装ubuntu的原因"><a href="#重装ubuntu的原因" class="headerlink" title="重装ubuntu的原因"></a>重装ubuntu的原因</h2><p>本来第一次用标准的流程装的lamp(liunx,apache,mysql,php)装的好好的<br>然后我就在捣鼓python2和python3的pip兼容的问题，弄了半天越弄越糟糕<br>我就想着先把python3卸载了再重装，说不定就没问题了呢！<br>我真的机智！</p>
+<p>然后。。。。</p>
+<p>悲剧了，当我卸载python3的过程中我就看见我在ubuntu上面装的软件图标一个一个的再消失啊！！！<br>没办法！我还是要等它卸载完啊！<br>可是卸载完之后，用啥功能没啥功能。<br>这我只能用绝招了啊！</p>
+<p><strong>重启！</strong></p>
+<p><strong><em><del>卧槽！卧槽！！卧槽！！！</del></em></strong></p>
+<p>连图形界面的莫得了，这下舒服了。</p>
+<p>算了从头再来吧！<br>从哪个头？</p>
+<p>我想了一下 我选择了重装系统。。。</p>
+<p>因为我电脑是装的双系统，所以我就直接进入windows10系统将我分给ubuntu的那200G直接删除了<br>然后下载了有一个easyUEFI将启动项删除。。。</p>
+<p>可是呢！一重启又发现这根本没用啊！blos启动项里面一直有ubuntu的grub的引导项。删也删不了。。。</p>
+<p>算了吧！我一想，我直接重装算了。。。</p>
+<p>我就制作好U盘启动盘，用上次分出来的200G直接重装。  </p>
+<p>这200G我是这样分的</p>
+<table>
+<thead>
+<tr>
+<th>挂载点</th>
+<th>大小</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/boot</td>
+<td>200M</td>
+</tr>
+<tr>
+<td>/</td>
+<td>40G</td>
+</tr>
+<tr>
+<td>/home</td>
+<td>140G</td>
+</tr>
+<tr>
+<td>/swap</td>
+<td>5G</td>
+</tr>
+<tr>
+<td>/usr/local</td>
+<td>15G</td>
+</tr>
+</tbody>
+</table>
+<p><code>我也不太知道合不合理，反正用着没问题</code></p>
+<p><code>然后呢？</code><br>我在将引导装到哪里的时候迷惑了，默认的是和windows相同的分区，不过我看了网上的一些文章<br>选择了安装到/boot分区，我也忘了我之前选的是装到哪里了。<code>尴了个尬</code>,这一次就装到/boot这里吧！</p>
+<p><code>然后呢?</code></p>
+<p>开启了漫漫的重新安装软件的路途了啊！</p>
+<p><code>然后呢？</code><br>就到了我写这篇blog的目的了。。。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>在安装lamp的时候啊！这一次可谓是遇到了非常多的问题啊！<br><strong>装ubuntu的时候还行</strong><br><strong>装apache时也还行</strong><br>可是到了php和mysql就开始给我掉链子了<br>php就不谈了，问题还是比较好解决，上Google搜了半天，发现是要添加源的问题。。。<code>继续尴尬</code></p>
+<h3 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h3><p>当然是使用安装啊<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-client mysql-server</span><br></pre></td></tr></table></figure></p>
+<p>可是剧情不按照我想的来</p>
+<p>说好的安装过程中会让我输密码的呢？怎么直接就装完啦！！！</p>
+<p>然后我试着<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure></p>
+<p>输完了所有密码之后，我终于想到了，这TM肯定是自动设置了密码了</p>
+<p><code>然后啊!</code></p>
+<p>我就Google啊！<br><strong>嘿嘿！</strong><br><strong>找到了</strong></p>
+<p>原来是自动设置了密码，初始密码和用户就在<em>sudo vim /etc/mysql/debian.cnf</em>文件里<br>里面的内容大概是这种</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># Automatically generated for Debian scripts. DO NOT TOUCH!</span><br><span class="line">[client]</span><br><span class="line">host     = localhost</span><br><span class="line">user     = debian-sys-maint</span><br><span class="line">password = hGu99nJgoWcmCDKT</span><br><span class="line">socket   = /var/run/mysqld/mysqld.sock</span><br><span class="line">[mysql_upgrade]</span><br><span class="line">host     = localhost</span><br><span class="line">user     = debian-sys-maint</span><br><span class="line">password = hGu99nJgoWcmCDKT</span><br><span class="line">socket   = /var/run/mysqld/mysqld.sock</span><br><span class="line">basedir  = /usr</span><br></pre></td></tr></table></figure>
+<p>然后我就用这个用户和密码登陆进去了，进去了干嘛？<strong><em>当然是改root密码啊!</em></strong></p>
+<p>友情提示：修改密码在mysql中用如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update mysql.user set authentication_string=password(&apos;yourpassword&apos;) where user=&apos;root&apos;and Host = &apos;localhost&apos;;</span><br></pre></td></tr></table></figure>
+<p><code>改完重启</code></p>
+<p>如果这就成功了的话！我就不会写这个blog了。。。</p>
+<p>我重启了又重启可是还是进不去一直报这个错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR 1045 (28000): Access denied for user &apos;root&apos;@&apos;localhost&apos; (using password: YES)</span><br></pre></td></tr></table></figure>
+<p>然后我发现我用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo mysql -u root -p</span><br></pre></td></tr></table></figure>
+<p><strong>居然能进去</strong></p>
+<p>然后我就想到了，多半是登陆权限的问题了。</p>
+<p>我就在网上针对这个问题搜索了一下，找到了答案。</p>
+<p><a href="https://www.cnblogs.com/leolztang/p/5094930.html" target="_blank" rel="noopener">mysql报2800错误</a></p>
+<p>原因就是<strong>root</strong>用户的<strong>plugin</strong>的值为<strong>auth_socket</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; select user, plugin from mysql.user;</span><br><span class="line">+-----------+-----------------------+</span><br><span class="line">| user      | plugin                |</span><br><span class="line">+-----------+-----------------------+</span><br><span class="line">| root      | auth_socket           |</span><br><span class="line">| mysql.sys | mysql_native_password |</span><br><span class="line">| dev       | mysql_native_password |</span><br><span class="line">+-----------+-----------------------+</span><br><span class="line">3 rows in set (0.01 sec)</span><br></pre></td></tr></table></figure>
+<p>我们就只需要输入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update mysql.user set plugin=&apos;mysql_native_password&apos; where user=&apos;root&apos;;</span><br></pre></td></tr></table></figure>
+<p>再重启mysql服务就行了</p>
+<p><strong><em>OK!问题解决</em></strong></p>
+<h3 id="卸载mysql"><a href="#卸载mysql" class="headerlink" title="卸载mysql"></a>卸载mysql</h3><p>这里顺便说一下怎样完全清除mysql吧！</p>
+<p>首先删除mysql：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get remove mysql-*</span><br></pre></td></tr></table></figure></p>
+<p>然后清理残留数据(这一步不做的话，无法完全清除mysql)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l |grep ^rc|awk &apos;&#123;print $2&#125;&apos; |sudo xargs dpkg -P</span><br><span class="line">这一步会弹出一个对话框，大概是提醒你你的数据库要被删了，选yes就行了</span><br></pre></td></tr></table></figure></p>
+<p><strong><em>然后mysql就没啦！你就可以重装啦！</em></strong></p>
+<h3 id="最后的最后"><a href="#最后的最后" class="headerlink" title="最后的最后"></a>最后的最后</h3><p>关于mysql的一些命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo service mysql start/stop/restart 启动/停止/重启！**</span><br><span class="line">类似的</span><br><span class="line">sudo service apache2  start/stop/restart ubuntu上是apache2，centOS上市httpd</span><br><span class="line">很多服务都是这样的</span><br></pre></td></tr></table></figure>
+<p><strong><em>真的没了…</em></strong></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/09/python使用时的一些问题/" rel="next" title="python使用时的一些问题">
+                <i class="fa fa-chevron-left"></i> python使用时的一些问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZZH</p>
+              <p class="site-description motion-element" itemprop="description">希望能将学习的知识写在这上面</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重装ubuntu的原因"><span class="nav-number">1.</span> <span class="nav-text">重装ubuntu的原因</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正文"><span class="nav-number">2.</span> <span class="nav-text">正文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装mysql"><span class="nav-number">2.1.</span> <span class="nav-text">安装mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#卸载mysql"><span class="nav-number">2.2.</span> <span class="nav-text">卸载mysql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后的最后"><span class="nav-number">2.3.</span> <span class="nav-text">最后的最后</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZZH</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
