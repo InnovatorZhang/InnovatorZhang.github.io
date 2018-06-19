@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="hexo的使用," />
+  <meta name="keywords" content="linux," />
 
 
 
@@ -79,21 +79,18 @@
 
 
 
-<meta name="description" content="开始 中间 结尾  锚点的使用 开始Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask">
-<meta name="keywords" content="hexo的使用">
+<meta name="description" content="参考资料：scp命令详解 Linux下 scp 命令的用法详解(服务器文件对拷传输工具) scp就是secure copy，一个在linux下用来进行远程拷贝文件的命令。有时我们需要获得远程服务器上的某个文件，该服务器既没有配置ftp服务器，也没有做共享，无法通过常规途径获得文件时，只需要通过简单的scp命令便可达到目的。 一、将本机上的文件复制到远程服务器上scp /home/administr">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HEXO的一些用法">
-<meta property="og:url" content="http://yoursite.com/2018/05/26/hello-world/index.html">
+<meta property="og:title" content="linux系统上的scp命令">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/linux的scp命令/index.html">
 <meta property="og:site_name" content="InnovatorZhang&#39;s blog">
-<meta property="og:description" content="开始 中间 结尾  锚点的使用 开始Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask">
+<meta property="og:description" content="参考资料：scp命令详解 Linux下 scp 命令的用法详解(服务器文件对拷传输工具) scp就是secure copy，一个在linux下用来进行远程拷贝文件的命令。有时我们需要获得远程服务器上的某个文件，该服务器既没有配置ftp服务器，也没有做共享，无法通过常规途径获得文件时，只需要通过简单的scp命令便可达到目的。 一、将本机上的文件复制到远程服务器上scp /home/administr">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/images/cat.gif">
-<meta property="og:image" content="http://yoursite.com/images/avatar.gif">
-<meta property="og:updated_time" content="2018-06-08T12:39:25.285Z">
+<meta property="og:updated_time" content="2018-06-19T12:36:03.677Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HEXO的一些用法">
-<meta name="twitter:description" content="开始 中间 结尾  锚点的使用 开始Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask">
-<meta name="twitter:image" content="http://yoursite.com/images/cat.gif">
+<meta name="twitter:title" content="linux系统上的scp命令">
+<meta name="twitter:description" content="参考资料：scp命令详解 Linux下 scp 命令的用法详解(服务器文件对拷传输工具) scp就是secure copy，一个在linux下用来进行远程拷贝文件的命令。有时我们需要获得远程服务器上的某个文件，该服务器既没有配置ftp服务器，也没有做共享，无法通过常规途径获得文件时，只需要通过简单的scp命令便可达到目的。 一、将本机上的文件复制到远程服务器上scp /home/administr">
 
 
 
@@ -123,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/05/26/hello-world/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/29/linux的scp命令/"/>
 
 
 
 
 
-  <title>HEXO的一些用法 | InnovatorZhang's blog</title>
+  <title>linux系统上的scp命令 | InnovatorZhang's blog</title>
   
 
 
@@ -236,7 +233,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/26/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/29/linux的scp命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZZH">
@@ -253,7 +250,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HEXO的一些用法</h1>
+          <h1 class="post-title" itemprop="name headline">linux系统上的scp命令</h1>
         
 
         <div class="post-meta">
@@ -265,8 +262,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-26T16:55:10+08:00">
-                2018-05-26
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-29T21:10:30+08:00">
+                2018-05-29
               </time>
             
 
@@ -303,44 +300,26 @@
       
 
       
-        <ul>
-<li><a href="#开始">开始</a></li>
-<li><a href="#中间">中间</a></li>
-<li><a href="#结尾">结尾</a></li>
-</ul>
-<p><code>锚点的使用</code></p>
-<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<h1 id="中间"><a href="#中间" class="headerlink" title="中间"></a>中间</h1><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<p>image1(目录为source/images):<img src="/images/cat.gif" alt="cat1"><br>image2:(目录为.deploy_git/images)<img src="/images/avatar.gif" alt="cat2"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式为:![cat1](/images/cat.gif)和![cat2](/images/avatar.gif)</span><br></pre></td></tr></table></figure>
-<p><code>以上用的是相同的格式引用图片,说明图片在这两个目录都可以用相同的方法引用</code></p>
-<h3 id="试一下引用站内文章"><a href="#试一下引用站内文章" class="headerlink" title="试一下引用站内文章"></a>试一下引用站内文章</h3><a href="/2018/06/04/JAVA的设计模式总览/" title="JAVA的设计模式总览">JAVA的设计模式总览</a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">格式为:&#123;% post_link JAVA的设计模式总览 %&#125;</span><br></pre></td></tr></table></figure>
-<p><code>以上是引用站内文章的方式</code></p>
-<ul>
-<li>一</li>
-<li>二<ul>
-<li>三</li>
-<li>四<ul>
-<li>五</li>
-<li>六<ul>
-<li>七</li>
-<li>八</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1>
+        <p>参考资料：<a href="http://blog.51cto.com/3301922/602487" target="_blank" rel="noopener">scp命令详解</a></p>
+<h2 id="Linux下-scp-命令的用法详解-服务器文件对拷传输工具"><a href="#Linux下-scp-命令的用法详解-服务器文件对拷传输工具" class="headerlink" title="Linux下 scp 命令的用法详解(服务器文件对拷传输工具) "></a>Linux下 scp 命令的用法详解(服务器文件对拷传输工具) </h2><p>scp就是secure copy，一个在linux下用来进行远程拷贝文件的命令。有时我们需要获得远程服务器上的某个文件，该服务器既没有配置ftp服务器，也没有做共享，无法通过常规途径获得文件时，只需要通过简单的scp命令便可达到目的。</p>
+<h1 id="一、将本机上的文件复制到远程服务器上"><a href="#一、将本机上的文件复制到远程服务器上" class="headerlink" title="一、将本机上的文件复制到远程服务器上"></a>一、将本机上的文件复制到远程服务器上</h1><pre><code>scp /home/administrator/news.txt root@192.168.6.129:/etc/squid
+
+/home/administrator/       本地文件的绝对路径 
+news.txt                   要复制到服务器上的本地文件 
+root                       通过root用户登录到远程服务器（也可以使用其他拥有同等权限的用户） 
+192.168.6.129              远程服务器的ip地址（也可以使用域名或机器名） 
+/etc/squid                 将本地文件复制到位于远程服务器上的路径
+</code></pre><h1 id="二、将远程服务器上的文件复制到本机"><a href="#二、将远程服务器上的文件复制到本机" class="headerlink" title="二、将远程服务器上的文件复制到本机"></a>二、将远程服务器上的文件复制到本机</h1><pre><code>scp remote@www.abc.com:/usr/local/sin.sh /home/administrator
+
+remote                   通过remote用户登录到远程服务器（也可以使用其他拥有同等权限的用户） 
+www.abc.com              远程服务器的域名（当然也可以使用该服务器ip地址） 
+/usr/local/sin.sh        欲复制到本机的位于远程服务器上的文件 
+/home/administrator      将远程文件复制到本地的绝对路径
+
+
+`如果要复制目录的话就在前面加上-r参数就行了`
+</code></pre><h2 id="可能会用到的命令"><a href="#可能会用到的命令" class="headerlink" title="可能会用到的命令"></a>可能会用到的命令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-v 和大多数 linux 命令中的 -v 意思一样 , 用来显示进度 . 可以用来查看连接 , 认证 , 或是配置错误 . </span><br><span class="line">-C 使能压缩选项 . </span><br><span class="line">-P 选择端口 . 注意 -p 已经被 rcp 使用 . </span><br><span class="line">-4 强行使用 IPV4 地址 . </span><br><span class="line">-6 强行使用 IPV6 地址 .</span><br></pre></td></tr></table></figure>
+
       
     </div>
     
@@ -357,7 +336,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo的使用/" rel="tag"># hexo的使用</a>
+            <a href="/tags/linux/" rel="tag"># linux</a>
           
         </div>
       
@@ -370,14 +349,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/05/28/关于java中socket的简单应用/" rel="next" title="关于java中socket的简单应用">
+                <i class="fa fa-chevron-left"></i> 关于java中socket的简单应用
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/28/关于java中socket的简单应用/" rel="prev" title="关于java中socket的简单应用">
-                关于java中socket的简单应用 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/29/关于shadowsocks的安装与使用/" rel="prev" title="关于shadowsocks的安装与使用">
+                关于shadowsocks的安装与使用 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -501,7 +484,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#中间"><span class="nav-number">2.</span> <span class="nav-text">中间</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#试一下引用站内文章"><span class="nav-number">2.0.1.</span> <span class="nav-text">试一下引用站内文章</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#结尾"><span class="nav-number">3.</span> <span class="nav-text">结尾</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux下-scp-命令的用法详解-服务器文件对拷传输工具"><span class="nav-number">1.</span> <span class="nav-text">Linux下 scp 命令的用法详解(服务器文件对拷传输工具) </span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一、将本机上的文件复制到远程服务器上"><span class="nav-number"></span> <span class="nav-text">一、将本机上的文件复制到远程服务器上</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#二、将远程服务器上的文件复制到本机"><span class="nav-number"></span> <span class="nav-text">二、将远程服务器上的文件复制到本机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可能会用到的命令"><span class="nav-number">1.</span> <span class="nav-text">可能会用到的命令</span></a></li></ol></div>
             
 
           </div>
