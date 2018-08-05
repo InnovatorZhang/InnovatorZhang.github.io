@@ -87,7 +87,7 @@
 <meta property="og:site_name" content="InnovatorZhang&#39;s blog">
 <meta property="og:description" content="liunx目录配置标准(FHS)为了统一各种文件的放置，所以就有了所谓的Filesystem hierarchy Standard(FHS) 目录主要被划分为四种交互作用的形态：   分类 可分享的(Shareable) 不可分享的(unShareable)     不变的(static) /usr(软件放置处) /etc(配置文件)   不变的(static) /opt(第三方软件) /boot">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-06-19T13:52:24.072Z">
+<meta property="og:updated_time" content="2018-06-19T13:54:44.876Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于linux的目录">
 <meta name="twitter:description" content="liunx目录配置标准(FHS)为了统一各种文件的放置，所以就有了所谓的Filesystem hierarchy Standard(FHS) 目录主要被划分为四种交互作用的形态：   分类 可分享的(Shareable) 不可分享的(unShareable)     不变的(static) /usr(软件放置处) /etc(配置文件)   不变的(static) /opt(第三方软件) /boot">
@@ -410,21 +410,21 @@
 <table>
 <thead>
 <tr>
-<th>目录</th>
+<th style="text-align:center">目录</th>
 <th>应放置文件内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/lost+found</td>
+<td style="text-align:center">/lost+found</td>
 <td>这个目录是在ext2/ext3文件格式下才会产生的一个目录，目的在于档文件系统发生错误是，将一些丢失的片段放在这个目录下面</td>
 </tr>
 <tr>
-<td>/proc</td>
+<td style="text-align:center">/proc</td>
 <td>这个目录本身是一个虚拟文件系统，它放置的数据都是在内存中，例如系统内核，进程，外部设备的状态，网络状态等，因为这个目录下的文件都在内存中，所以不占任何硬盘空间</td>
 </tr>
 <tr>
-<td>/sys</td>
+<td style="text-align:center">/sys</td>
 <td>和/proc差不多，主要也是记录与内核相关的信息，包括目前已加载的内核模块与内核检测的硬件折别信息等，同样不占硬盘容量</td>
 </tr>
 </tbody>
@@ -442,38 +442,37 @@
 <table>
 <thead>
 <tr>
-<th>目录</th>
+<th style="text-align:center">目录</th>
 <th>应放置文件内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/usr/bin</td>
+<td style="text-align:center">/usr/bin</td>
 <td>绝大部分的用户可使用命令都放在这里，与/bin不同的地方在<strong>与开机过程无关</strong></td>
 </tr>
 <tr>
-<td>/usr/include</td>
-<td></td>
+<td style="text-align:center">/usr/include</td>
 <td>C/C++语言的头文件与包含文件放置处</td>
 </tr>
 <tr>
-<td>/usr/lib</td>
+<td style="text-align:center">/usr/lib</td>
 <td>包含各应用软件的函数库，目标文件。以及不被一般用户惯用的执行文件或脚本。某些软件会提供一些特殊的命令来进行服务器的设置，这些命令不会经常被使用，那么就会被放在这个目录下</td>
 </tr>
 <tr>
-<td>/usr/local</td>
+<td style="text-align:center">/usr/local</td>
 <td>系统管理员在本机自行安装的软件，建议安装到此目录，这样便于管理，这个目录这子目录和/usr目录相似</td>
 </tr>
 <tr>
-<td>/usr/sbin</td>
+<td style="text-align:center">/usr/sbin</td>
 <td>非系统正常运行所需要的命令，最常见的就是某些网络服务器软件的服务命令</td>
 </tr>
 <tr>
-<td>/usr/share</td>
+<td style="text-align:center">/usr/share</td>
 <td>放置共享文件的地方，在这个目录下放置的数据几乎部分硬件架构都可以读取的数据，因为基本都是文本文件，一般有以下子目录：1. /usr/share/man：在线帮助文件(man命令查询的文件)  2./usr/share/doc: 软件杂项的文件说明  3./usr/share/zoneinfo：与时区有关的时区文件</td>
 </tr>
 <tr>
-<td>/usr/src</td>
+<td style="text-align:center">/usr/src</td>
 <td>源码一般建议放置到这里，src有source的意思，至于内核源码这建议放置到/usr/src/linux下</td>
 </tr>
 </tbody>
@@ -482,37 +481,37 @@
 <table>
 <thead>
 <tr>
-<th>目录</th>
+<th style="text-align:center">目录</th>
 <th>应放置内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>/var/cache</td>
+<td style="text-align:center">/var/cache</td>
 <td>应用程序运行过程中会产生的一些暂存文件</td>
 </tr>
 <tr>
-<td>/var/lib</td>
+<td style="text-align:center">/var/lib</td>
 <td>程序本身的执行过程中，需要使用的数据文件放置的目录，在此目录下各自的软件应该要有各自的目录，例如，MySQL的数据库放置到/var/lib/mysql中</td>
 </tr>
 <tr>
-<td>/var/lock</td>
+<td style="text-align:center">/var/lock</td>
 <td>给某些设备或是文件资源上锁，使某些设备或资源确保只能同时一次只能被一个程序使用</td>
 </tr>
 <tr>
-<td>/var/log</td>
+<td style="text-align:center">/var/log</td>
 <td>登陆文件放置的目录。</td>
 </tr>
 <tr>
-<td>/var/mail</td>
+<td style="text-align:center">/var/mail</td>
 <td>放置电子邮件信箱的目录，不过目录也被放置到<strong>/var/spool/mail</strong>中，通常这两个目录是互为链接文件的</td>
 </tr>
 <tr>
-<td>/var/run</td>
+<td style="text-align:center">/var/run</td>
 <td>某些程序或者服务被启动之后会将PID放在这个目录下</td>
 </tr>
 <tr>
-<td>/var/spool</td>
+<td style="text-align:center">/var/spool</td>
 <td>这个目录通常放置一些队列数据，就是排队等待其他程序使用的数据，这些数据被使用之后通常会被删除。</td>
 </tr>
 </tbody>
@@ -557,6 +556,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/05/爬取猫眼前一百电影数据/" rel="prev" title="爬取猫眼前一百电影数据">
+                爬取猫眼前一百电影数据 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -633,7 +636,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
