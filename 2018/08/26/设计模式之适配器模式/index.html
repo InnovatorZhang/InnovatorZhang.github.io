@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="java学习," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="适配器模式概念及作用 将一种类的接口转换为另一种客户期望的接口，在适配器模式下允许有不相同的接口的类一起工作   使用新接口包装现有的类，使其能够满足需求 将旧组件与新系统相匹配  12345678910重复使用一直是痛苦和难以捉摸的。一个原因是设计新东西的困难，同时重用旧的东西。   旧的和新的之间总有一些不太对的东西。它可能是物理尺寸或不对齐。它可能是定时或同步。   这可能是不幸的假设或竞争">
+<meta name="keywords" content="java学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式之适配器模式">
+<meta property="og:url" content="http://yoursite.com/2018/08/26/设计模式之适配器模式/index.html">
+<meta property="og:site_name" content="InnovatorZhang&#39;s blog">
+<meta property="og:description" content="适配器模式概念及作用 将一种类的接口转换为另一种客户期望的接口，在适配器模式下允许有不相同的接口的类一起工作   使用新接口包装现有的类，使其能够满足需求 将旧组件与新系统相匹配  12345678910重复使用一直是痛苦和难以捉摸的。一个原因是设计新东西的困难，同时重用旧的东西。   旧的和新的之间总有一些不太对的东西。它可能是物理尺寸或不对齐。它可能是定时或同步。   这可能是不幸的假设或竞争">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/java/adapter.png">
+<meta property="og:image" content="http://yoursite.com/images/java/adapter_1.jpg">
+<meta property="og:updated_time" content="2018-08-27T07:56:58.471Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="设计模式之适配器模式">
+<meta name="twitter:description" content="适配器模式概念及作用 将一种类的接口转换为另一种客户期望的接口，在适配器模式下允许有不相同的接口的类一起工作   使用新接口包装现有的类，使其能够满足需求 将旧组件与新系统相匹配  12345678910重复使用一直是痛苦和难以捉摸的。一个原因是设计新东西的困难，同时重用旧的东西。   旧的和新的之间总有一些不太对的东西。它可能是物理尺寸或不对齐。它可能是定时或同步。   这可能是不幸的假设或竞争">
+<meta name="twitter:image" content="http://yoursite.com/images/java/adapter.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/08/26/设计模式之适配器模式/"/>
+
+
+
+
+
+  <title>设计模式之适配器模式 | InnovatorZhang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">InnovatorZhang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Sakura</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/26/设计模式之适配器模式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZZH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="InnovatorZhang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">设计模式之适配器模式</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-26T22:21:45+08:00">
+                2018-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h1><h2 id="概念及作用"><a href="#概念及作用" class="headerlink" title="概念及作用"></a>概念及作用</h2><ul>
+<li>将一种类的接口转换为另一种客户期望的接口，在适配器模式下允许有不相同的接口的类一起工作  </li>
+<li>使用新接口包装现有的类，使其能够满足需求</li>
+<li>将旧组件与新系统相匹配</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">重复使用一直是痛苦和难以捉摸的。一个原因是设计新东西的困难，同时重用旧的东西。  </span><br><span class="line"> 旧的和新的之间总有一些不太对的东西。它可能是物理尺寸或不对齐。它可能是定时或同步。  </span><br><span class="line"> 这可能是不幸的假设或竞争标准。</span><br><span class="line"> </span><br><span class="line">这就像在旧的双插墙插座中插入一个新的三爪电插头的问题,某种适配器或中介是必要的。  </span><br><span class="line"></span><br><span class="line">适配器是关于创建中间抽象，将旧组件转换或映射到新系统。客户端调用Adapter对象上的方法，  </span><br><span class="line">该方法将它们重定向到对旧组件的调用。 此策略可以通过继承或聚合实现。</span><br><span class="line"></span><br><span class="line">适配器用作现有类的包装器或修改器。 它提供该类的不同或翻译视图。</span><br></pre></td></tr></table></figure>
+<h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p><img src="/images/java/adapter.png" alt="适配器模式"></p>
+<ul>
+<li>Target：该角色定义要转换成的目标接口。</li>
+<li>Adapee：需要被转换成目标角色的源角色。</li>
+<li>Adapter：该角色是适配器模式的核心，其职责是通过继承或者类相关的方式，将源角色转换成目标角色</li>
+</ul>
+<h2 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h2><h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>适配器可以让两个没有任何广西的类在一起运行。</li>
+<li>增加了类的透明性</li>
+<li>增加了类的复用性</li>
+<li>增加了代码的灵活性</li>
+</ul>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><p>原文：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">An &quot;off the shelf&quot; component offers compelling functionality that you would  </span><br><span class="line">like to reuse, but its &quot;view of the world&quot; is not compatible with the philosophy  </span><br><span class="line">and architecture of the system currently being developed.</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>“现成”组件提供了您想要重用的功能，但其“世界观”与当前正在开发的系统的理念和架构不兼容。  </li>
+</ul>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p><img src="/images/java/adapter_1.jpg" alt="现实例子"></p>
+<p>通过将一个类的接口转换为客户端期望的接口，Adapter模式允许其他不兼容的类一起工作。 套接字扳手提供了适配器的示例。<br>如果驱动器的尺寸相同，则插座连接到棘轮。美国的典型驱动器尺寸为1/2“和1/4”。<br> 显然，除非使用适配器，否则1/2“驱动棘轮将不适合1/4”驱动器插座。<br>1/2“至1/4”适配器具有1/2“内螺纹连接，可安装在1/2”驱动棘轮上，1/4“外螺纹连接适合1/4”驱动插座。</p>
+<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z, <span class="keyword">int</span> j)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Line</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Line from point A("</span> + x1 + <span class="string">";"</span> + y1 + <span class="string">"), to point B("</span> + x2 + <span class="string">";"</span> + y2 + <span class="string">")"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Rectangle</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> width, <span class="keyword">int</span> height)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Rectangle with coordinate left-down point ("</span> + x + <span class="string">";"</span> + y + <span class="string">"), width: "</span> + width</span><br><span class="line">                + <span class="string">", height: "</span> + height);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LineAdapter</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Line adaptee;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LineAdapter</span><span class="params">(Line line)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.adaptee = line;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2)</span> </span>&#123;</span><br><span class="line">        adaptee.draw(x1, y1, x2, y2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RectangleAdapter</span> <span class="keyword">implements</span> <span class="title">Shape</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Rectangle adaptee;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RectangleAdapter</span><span class="params">(Rectangle rectangle)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.adaptee = rectangle;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">(<span class="keyword">int</span> x1, <span class="keyword">int</span> y1, <span class="keyword">int</span> x2, <span class="keyword">int</span> y2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> x = Math.min(x1, x2);</span><br><span class="line">        <span class="keyword">int</span> y = Math.min(y1, y2);</span><br><span class="line">        <span class="keyword">int</span> width = Math.abs(x2 - x1);</span><br><span class="line">        <span class="keyword">int</span> height = Math.abs(y2 - y1);</span><br><span class="line">        adaptee.draw(x, y, width, height);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdapterDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Shape[] shapes = &#123;<span class="keyword">new</span> RectangleAdapter(<span class="keyword">new</span> Rectangle()),</span><br><span class="line">                          <span class="keyword">new</span> LineAdapter(<span class="keyword">new</span> Line())&#125;;</span><br><span class="line">        <span class="keyword">int</span> x1 = <span class="number">10</span>, y1 = <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">int</span> x2 = <span class="number">30</span>, y2 = <span class="number">60</span>;</span><br><span class="line">        <span class="keyword">for</span> (Shape shape : shapes) &#123;</span><br><span class="line">            shape.draw(x1, y1, x2, y2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* The OLD */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SquarePeg</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> width;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SquarePeg</span><span class="params">(<span class="keyword">double</span> width)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getWidth</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> width;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setWidth</span><span class="params">(<span class="keyword">double</span> width)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.width = width;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* The NEW */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RoundHole</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> radius;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">RoundHole</span><span class="params">(<span class="keyword">int</span> radius)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.radius = radius;</span><br><span class="line">        System.out.println(<span class="string">"RoundHole: max SquarePeg is "</span> + radius * Math.sqrt(<span class="number">2</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getRadius</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> radius;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Design a "wrapper" class that can "impedance match" the old to the new</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SquarePegAdapter</span> </span>&#123;</span><br><span class="line">    <span class="comment">// The adapter/wrapper class "has a" instance of the legacy class</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> SquarePeg squarePeg;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SquarePegAdapter</span><span class="params">(<span class="keyword">double</span> w)</span> </span>&#123;</span><br><span class="line">        squarePeg = <span class="keyword">new</span> SquarePeg(w);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Identify the desired interface</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">makeFit</span><span class="params">(RoundHole roundHole)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// The adapter/wrapper class delegates to the legacy object</span></span><br><span class="line">        <span class="keyword">double</span> amount = squarePeg.getWidth() - roundHole.getRadius() * Math.sqrt(<span class="number">2</span>);</span><br><span class="line">        System.out.println( <span class="string">"reducing SquarePeg "</span> + squarePeg.getWidth() + <span class="string">" by "</span> + ((amount &lt; <span class="number">0</span>) ? <span class="number">0</span> : amount) + <span class="string">" amount"</span>);</span><br><span class="line">        <span class="keyword">if</span> (amount &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            squarePeg.setWidth(squarePeg.getWidth() - amount);</span><br><span class="line">            System.out.println(<span class="string">"   width is now "</span> + squarePeg.getWidth());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AdapterDemoSquarePeg</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">( String[] args )</span> </span>&#123;</span><br><span class="line">        RoundHole roundHole = <span class="keyword">new</span> RoundHole( <span class="number">5</span> );</span><br><span class="line">        SquarePegAdapter squarePegAdapter;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">6</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            squarePegAdapter = <span class="keyword">new</span> SquarePegAdapter((<span class="keyword">double</span>)i);</span><br><span class="line">            <span class="comment">// The client uses (is coupled to) the new interface</span></span><br><span class="line">            squarePegAdapter.makeFit(roundHole);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java学习/" rel="tag"># java学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/14/从笔趣阁抓取小说/" rel="next" title="从笔趣阁抓取小说">
+                <i class="fa fa-chevron-left"></i> 从笔趣阁抓取小说
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZZH</p>
+              <p class="site-description motion-element" itemprop="description">希望能将学习的知识写在这上面</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#适配器模式"><span class="nav-number">1.</span> <span class="nav-text">适配器模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念及作用"><span class="nav-number">1.1.</span> <span class="nav-text">概念及作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UML"><span class="nav-number">1.2.</span> <span class="nav-text">UML</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优缺点"><span class="nav-number">1.3.</span> <span class="nav-text">优缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优点"><span class="nav-number">1.3.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点"><span class="nav-number">1.3.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">1.4.</span> <span class="nav-text">例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#示例代码"><span class="nav-number">1.5.</span> <span class="nav-text">示例代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZZH</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
