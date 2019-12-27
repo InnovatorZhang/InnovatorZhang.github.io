@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="C语言," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="套接字介绍多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，许多计算机操作系统为应用程序与TCP/IP协议交互提供了称为套接字(Socket)的接口。套接字，是支持TCP/IP的网络通信的基本操作单元，可以看做是不同主机之间的进程进行双向通信的端点，简单的说就是通信的两方的一种约定，用套接字中的相关函数来完成通信过程。常用的TCP/IP协议">
+<meta name="keywords" content="C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言socket的简单使用">
+<meta property="og:url" content="http://yoursite.com/2019/12/27/C语言socket的简单使用/index.html">
+<meta property="og:site_name" content="InnovatorZhang&#39;s blog">
+<meta property="og:description" content="套接字介绍多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，许多计算机操作系统为应用程序与TCP/IP协议交互提供了称为套接字(Socket)的接口。套接字，是支持TCP/IP的网络通信的基本操作单元，可以看做是不同主机之间的进程进行双向通信的端点，简单的说就是通信的两方的一种约定，用套接字中的相关函数来完成通信过程。常用的TCP/IP协议">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-12-27T11:52:31.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言socket的简单使用">
+<meta name="twitter:description" content="套接字介绍多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。为了区别不同的应用程序进程和连接，许多计算机操作系统为应用程序与TCP/IP协议交互提供了称为套接字(Socket)的接口。套接字，是支持TCP/IP的网络通信的基本操作单元，可以看做是不同主机之间的进程进行双向通信的端点，简单的说就是通信的两方的一种约定，用套接字中的相关函数来完成通信过程。常用的TCP/IP协议">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/12/27/C语言socket的简单使用/"/>
+
+
+
+
+
+  <title>C语言socket的简单使用 | InnovatorZhang's blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">InnovatorZhang's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Sakura</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/12/27/C语言socket的简单使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZZH">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="InnovatorZhang's blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C语言socket的简单使用</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-12-27T19:21:37+08:00">
+                2019-12-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="套接字介绍"><a href="#套接字介绍" class="headerlink" title="套接字介绍"></a>套接字介绍</h1><p>多个TCP连接或多个应用程序进程可能需要通过同一个TCP协议端口传输数据。<br>为了区别不同的应用程序进程和连接，许多计算机操作系统为应用程序与TCP/IP协议交互提供了称为套接字(Socket)的接口。<br>套接字，是支持TCP/IP的网络通信的基本操作单元，可以看做是不同主机之间的进程进行双向通信的端点，简单的说就是通信的两方的一种约定，用套接字中的相关函数来完成通信过程。<br>常用的TCP/IP协议的3种套接字类型如下所示。</p>
+<h3 id="1-流套接字（SOCK-STREAM）："><a href="#1-流套接字（SOCK-STREAM）：" class="headerlink" title="1.流套接字（SOCK_STREAM）："></a>1.流套接字（SOCK_STREAM）：</h3><p>流套接字用于提供面向连接、可靠的数据传输服务。该服务将保证数据能够实现无差错、无重复发送，并按顺序接收。<br>流套接字之所以能够实现可靠的数据服务，原因在于其使用了传输控制协议，即TCP（The Transmission Control Protocol）协议。</p>
+<h3 id="2-数据报套接字（SOCK-DGRAM）：数据报套接字提供了一种无连接的服务。"><a href="#2-数据报套接字（SOCK-DGRAM）：数据报套接字提供了一种无连接的服务。" class="headerlink" title="2.数据报套接字（SOCK_DGRAM）：数据报套接字提供了一种无连接的服务。"></a>2.数据报套接字（SOCK_DGRAM）：数据报套接字提供了一种无连接的服务。</h3><p>该服务并不能保证数据传输的可靠性，数据有可能在传输过程中丢失或出现数据重复，且无法保证顺序地接收到数据。数据报套接字使用UDP（User Datagram Protocol）协议进行数据的传输。<br>由于数据报套接字不能保证数据传输的可靠性，对于有可能出现的数据丢失情况，需要在程序中做相应的处理。</p>
+<h3 id="3-原始套接字（SOCK-RAW）：原始套接字与标准套接字（标准套接字指的是前面介绍的流套接字和数据报套接字）的区别在于："><a href="#3-原始套接字（SOCK-RAW）：原始套接字与标准套接字（标准套接字指的是前面介绍的流套接字和数据报套接字）的区别在于：" class="headerlink" title="3.原始套接字（SOCK_RAW）：原始套接字与标准套接字（标准套接字指的是前面介绍的流套接字和数据报套接字）的区别在于："></a>3.原始套接字（SOCK_RAW）：原始套接字与标准套接字（标准套接字指的是前面介绍的流套接字和数据报套接字）的区别在于：</h3><p>原始套接字可以读写内核没有处理的IP数据包，而流套接字只能读取TCP协议的数据，<br>数据报套接字只能读取UDP协议的数据。因此，如果要访问其他协议发送数据必须使用原始套接字。<br>不同操作系统中的Socket</p>
+<blockquote>
+<p>Windows Socket (Winsock)<br>Linux Socket (BSD Socket)</p>
+</blockquote>
+<p>`</p>
+<p>`</p>
+<h1 id="网络编程中各协议首部结构体定义"><a href="#网络编程中各协议首部结构体定义" class="headerlink" title="网络编程中各协议首部结构体定义"></a>网络编程中各协议首部结构体定义</h1><h3 id="1、IP数据报首部的固定部分中的各字段"><a href="#1、IP数据报首部的固定部分中的各字段" class="headerlink" title="1、IP数据报首部的固定部分中的各字段"></a>1、IP数据报首部的固定部分中的各字段</h3><h4 id="1-版本-占4位，指IP协议的版本。通信双方使用的IP协议版本必须一致。目前广泛使用的IP协议版本号为4（即IPv4）。"><a href="#1-版本-占4位，指IP协议的版本。通信双方使用的IP协议版本必须一致。目前广泛使用的IP协议版本号为4（即IPv4）。" class="headerlink" title="(1)版本 占4位，指IP协议的版本。通信双方使用的IP协议版本必须一致。目前广泛使用的IP协议版本号为4（即IPv4）。"></a>(1)版本 占4位，指IP协议的版本。通信双方使用的IP协议版本必须一致。目前广泛使用的IP协议版本号为4（即IPv4）。</h4><h4 id="2-首部长度-占4位，可表示的最大十进制数值是15。请注意，这个字段所表示数的单位是32位字长（1个32位字长是4字节），"><a href="#2-首部长度-占4位，可表示的最大十进制数值是15。请注意，这个字段所表示数的单位是32位字长（1个32位字长是4字节），" class="headerlink" title="(2)首部长度 占4位，可表示的最大十进制数值是15。请注意，这个字段所表示数的单位是32位字长（1个32位字长是4字节），"></a>(2)首部长度 占4位，可表示的最大十进制数值是15。请注意，这个字段所表示数的单位是32位字长（1个32位字长是4字节），</h4><p> 因此，当IP的首部长度为1111时（即十进制的15），首部长度就达到60字节。当IP分组的首部长度不是4字节的整数倍时，<br> 必须利用最后的填充字段加以填充。因此数据部分永远在4字节的整数倍开始，这样在实现IP协议时较为方便。首部长度限制为60<br> 字节的缺点是有时可能不够用。但这样做是希望用户尽量减少开销。最常用的首部长度就是20字节（即首部长度为0101），这时不使用任何选项。<br> （＃我们一般看到的版本和首部长度两个字段是十六进制45，就是版本号version=4,headlength=5,也就是首部长度是60个字节）  </p>
+<h4 id="3-区分服务-占8位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。"><a href="#3-区分服务-占8位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。" class="headerlink" title="(3)区分服务 占8位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。"></a>(3)区分服务 占8位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。</h4><p>  1998年IETF把这个字段改名为区分服务DS(Differentiated Services)。只有在使用区分服务时，这个字段才起作用。 </p>
+<h4 id="4-总长度-总长度指首部和数据之和的长度，单位为字节。总长度字段为16位，因此数据报的最大长度为216-1-65535字节。"><a href="#4-总长度-总长度指首部和数据之和的长度，单位为字节。总长度字段为16位，因此数据报的最大长度为216-1-65535字节。" class="headerlink" title="(4)总长度 总长度指首部和数据之和的长度，单位为字节。总长度字段为16位，因此数据报的最大长度为216-1=65535字节。"></a>(4)总长度 总长度指首部和数据之和的长度，单位为字节。总长度字段为16位，因此数据报的最大长度为216-1=65535字节。</h4><p>  ＃可以看这个以太网frame总长为336字节，而IP数据包Total length＝322，336－322＝14正好是Ethernet包头的长度，<br>  所以就可以看出这IP数据包总长度一值就是除去Ethernet头的剩余长度，也就是IP包头加数据的长度。<br>  在IP层下面的每一种数据链路层都有自己的帧格式，其中包括帧格式中的数据字段的最大长度，这称为最大传送单元MTU(Maximum Transfer Unit)。<br>  当一个数据报封装成链路层的帧时，此数据报的总长度（即首部加上数据部分）一定不能超过下面的数据链路层的MTU值。 </p>
+<h4 id="5-标识-identification-占16位。IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。"><a href="#5-标识-identification-占16位。IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。" class="headerlink" title="(5)标识(identification) 占16位。IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。"></a>(5)标识(identification) 占16位。IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。</h4><p>  但这个“标识”并不是序号，因为IP是无连接服务，数据报不存在按序接收的问题。当数据报由于长度超过网络的MTU而必须分片时，<br>  这个标识字段的值就被复制到所有的数据报的标识字段中。相同的标识字段的值使分片后的各数据报片最后能正确地重装成为原来的数据报。 </p>
+<h4 id="6-标志-flag-占3位，但目前只有2位有意义。"><a href="#6-标志-flag-占3位，但目前只有2位有意义。" class="headerlink" title="(6)标志(flag) 占3位，但目前只有2位有意义。"></a>(6)标志(flag) 占3位，但目前只有2位有意义。</h4><ul>
+<li>标志字段中的最低位记为MF(More Fragment)。MF=1即表示后面“还有分片”的数据报。MF=0表示这已是若干数据报片中的最后一个。 </li>
+<li><p>标志字段中间的一位记为DF(Don’t Fragment)，意思是“不能分片”。只有当DF=0时才允许分片。</p>
+<h4 id="7-占13位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。"><a href="#7-占13位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。" class="headerlink" title="(7)占13位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。"></a>(7)占13位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。</h4><p>也就是说，相对用户数据字段的起点，该片从何处开始。<br>片偏移以8个字节为偏移单位。这就是说，每个分片的长度一定是8字节（64位）的整数倍。 </p>
+<h4 id="8-生存时间-占8位，生存时间字段常用的的英文缩写是TTL-Time-To-Live-，表明是数据报在网络中的寿命。"><a href="#8-生存时间-占8位，生存时间字段常用的的英文缩写是TTL-Time-To-Live-，表明是数据报在网络中的寿命。" class="headerlink" title="(8)生存时间 占8位，生存时间字段常用的的英文缩写是TTL(Time To Live)，表明是数据报在网络中的寿命。"></a>(8)生存时间 占8位，生存时间字段常用的的英文缩写是TTL(Time To Live)，表明是数据报在网络中的寿命。</h4><p>由发出数据报的源点设置这个字段。其目的是防止无法交付的数据报无限制地在因特网中兜圈子，因而白白消耗网络资源。<br>最初的设计是以秒作为TTL的单位。每经过一个路由器时，就把TTL减去数据报在路由器消耗掉的一段时间。<br>若数据报在路由器消耗的时间小于1秒，就把 TTL值减1。当TTL值为0时，就丢弃这个数据报。<br>＃TTL通常是32或者64，scapy中默认是64 </p>
+<h4 id="9-协议-占8位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将数据部分上交给哪个处理过程。"><a href="#9-协议-占8位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将数据部分上交给哪个处理过程。" class="headerlink" title="(9)协议 占8位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将数据部分上交给哪个处理过程。"></a>(9)协议 占8位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将数据部分上交给哪个处理过程。</h4><p>（在scapy中，下层的这个protocol一般可以从上曾继承而来，自动填充，我们一般可以省略不填此项） </p>
+<h4 id="10-首部检验和-占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，"><a href="#10-首部检验和-占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，" class="headerlink" title="(10)首部检验和 占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，"></a>(10)首部检验和 占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，</h4><p>路由器都要重新计算一下首部检验和（一些字段，如生存时间、标志、片偏移等都可能发生变化）。不检验数据部分可减少计算的工作量。  </p>
+<h4 id="11-源地址-占32位。"><a href="#11-源地址-占32位。" class="headerlink" title="(11)源地址 占32位。"></a>(11)源地址 占32位。</h4><h4 id="12-目的地址-占32位。"><a href="#12-目的地址-占32位。" class="headerlink" title="(12)目的地址 占32位。"></a>(12)目的地址 占32位。</h4><p>`</p>
+</li>
+</ul>
+<p>  `</p>
+<h2 id="IP首部"><a href="#IP首部" class="headerlink" title=" IP首部"></a> <strong>IP首部</strong></h2>  <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">IpHeader</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> Version_HLen;<span class="comment">//版本号 首部长度</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> TOS;<span class="comment">//服务类型</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> Length;<span class="comment">//总长度</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> Ident; <span class="comment">//标识</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> Flags_Offset; <span class="comment">//标志 片偏移</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> TTL; <span class="comment">//生存时间</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> Protocol; <span class="comment">//协议</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">short</span> Checksum; <span class="comment">//首部校验和</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> SourceAddr; <span class="comment">//源地址</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> DestinationAddr; <span class="comment">//目的地址</span></span><br><span class="line">&#125; Ip_Header;</span><br></pre></td></tr></table></figure>
+<p> `</p>
+<p> `</p>
+<h2 id="TCP首部"><a href="#TCP首部" class="headerlink" title="  TCP首部"></a>  <strong>TCP首部</strong></h2> <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//TCP的标志</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> URG 0x20 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> ACK 0x10 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PSH 0x08 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> RST 0x04 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SYN 0x02 </span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FIN 0x01</span></span><br><span class="line"><span class="comment">//定义TCP首部</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">TcpHeader</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    USHORT SrcPort;<span class="comment">//16位源端口</span></span><br><span class="line">    USHORT DstPort; <span class="comment">//16位目的端口</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> SequenceNum; <span class="comment">//32位序号</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">int</span> Acknowledgment; <span class="comment">//32为确认序号</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> HdrLen; <span class="comment">//首部长度</span></span><br><span class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> Flags; <span class="comment">//6位标志位</span></span><br><span class="line">    USHORT AdvertisedWindow; <span class="comment">//16位窗口大小</span></span><br><span class="line">    USHORT Checksum; <span class="comment">//16位校验和</span></span><br><span class="line">    USHORT UrgPtr; <span class="comment">//16位紧急指针</span></span><br><span class="line">&#125; Tcp_Header;</span><br></pre></td></tr></table></figure>
+<p>`</p>
+<p> `</p>
+<h2 id="TCP伪首部"><a href="#TCP伪首部" class="headerlink" title="  TCP伪首部"></a>  <strong>TCP伪首部</strong></h2> <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">PsdTcpHeader</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> SourceAddr;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">long</span> DestinationAddr;</span><br><span class="line">        <span class="keyword">char</span> Zero;</span><br><span class="line">        <span class="keyword">char</span> Protcol;</span><br><span class="line">        <span class="keyword">unsigned</span> <span class="keyword">short</span> TcpLen;</span><br><span class="line">&#125; PSD_Tcp_Header;</span><br></pre></td></tr></table></figure>
+<h1 id="原始套接字编程"><a href="#原始套接字编程" class="headerlink" title="原始套接字编程"></a>原始套接字编程</h1><h3 id="Winsock头文件"><a href="#Winsock头文件" class="headerlink" title="Winsock头文件"></a>Winsock头文件</h3><p> 开始进行Winsock编程，通过包含Winsock2.h来使用Winsock的API。（Winsock2.h头文件已经包含了大部分Winsock函数、<br> 数据结构和定义，Ws2tcpip.h头文件包含了在Winsock2协议兼容文档中为TCP/IP用于检索IP地址的新函数和数据结构。</p>
+<h3 id="接收端代码"><a href="#接收端代码" class="headerlink" title="接收端代码"></a>接收端代码</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;Winsock2.h&gt;</span><br><span class="line">#pragma comment(lib,&quot;wsock32.lib&quot;)</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	struct WSAData wsaData;</span><br><span class="line">	SOCKET RecSocket;//接收用的socket</span><br><span class="line">	SOCKET SenSocket;//发送用的socket</span><br><span class="line">	char Name[255];</span><br><span class="line">	char buffer[1024]=&#123;0&#125;;//输入缓冲区</span><br><span class="line">	int Result;</span><br><span class="line">	struct hostent *pHostent;</span><br><span class="line">	SOCKADDR_IN sock;</span><br><span class="line">	SOCKADDR_IN senAddr;</span><br><span class="line">	int flag;</span><br><span class="line">	int nTimeOver=1000;//超时时间</span><br><span class="line">	int nSize=sizeof(SOCKADDR);</span><br><span class="line"></span><br><span class="line">	//初始化socket</span><br><span class="line">	Result=WSAStartup(MAKEWORD(2,2),&amp;wsaData);</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;WSAStartup failed with error %d\n&quot;,Result);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	//打印wsaData信息</span><br><span class="line">	printf(&quot;wsaData.wVersion=%d\n-----\n&quot;,wsaData.wVersion);</span><br><span class="line">	printf(&quot;wsaData.wHighVersion=%d\n-----\n&quot;,wsaData.wHighVersion);</span><br><span class="line">	printf(&quot;wsaData.szDescription=%s\n-----\n&quot;,wsaData.szDescription);</span><br><span class="line">    printf(&quot;wsaData.szSystemStatus=%s\n-----\n&quot;,wsaData.szSystemStatus);</span><br><span class="line">	printf(&quot;wsaData.iMaxSockets=%d\n-----\n&quot;,wsaData.iMaxSockets);</span><br><span class="line">	printf(&quot;wsaData.iMaxUdpDg=%d\n-----\n&quot;,wsaData.iMaxUdpDg);</span><br><span class="line">	printf(&quot;wsaData.lpVendorInfo=%p\n-----\n&quot;,wsaData.lpVendorInfo);</span><br><span class="line"></span><br><span class="line">	//创建原始套接字</span><br><span class="line">	RecSocket=socket(AF_INET,SOCK_STREAM,IPPROTO_TCP);</span><br><span class="line">	if(RecSocket==INVALID_SOCKET)&#123;</span><br><span class="line">		printf(&quot;socket failed with error %d\n&quot;,WSAGetLastError());</span><br><span class="line">		closesocket(RecSocket);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//初始化sock变量</span><br><span class="line">	Result=gethostname(Name,255);</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;gethostname failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	pHostent=(struct hostent*)malloc(sizeof(struct hostent));</span><br><span class="line">	pHostent=gethostbyname(Name);</span><br><span class="line">	sock.sin_family=AF_INET;</span><br><span class="line">	sock.sin_port=htons(5555);</span><br><span class="line">	memcpy(&amp;sock.sin_addr.S_un.S_addr,pHostent-&gt;h_addr_list[0],pHostent-&gt;h_length);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	//绑定套接字</span><br><span class="line">	Result=bind(RecSocket,(PSOCKADDR)&amp;sock,sizeof(sock));</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;bind failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		closesocket(RecSocket);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">/*</span><br><span class="line">	//设置套接字</span><br><span class="line">		//设置手工填充IP数据包首部</span><br><span class="line">	flag=1;</span><br><span class="line">	if(setsockopt(SendSocket,IPPROTO_IP,IP_HDRINCL,(char *)&amp;flag,sizeof(flag))==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;setsockopt failed with error %d\n\n&quot;,WSAGetLastError());</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">		//设置超时时间</span><br><span class="line">	if(setsockopt(SendSocket,SOL_SOCKET,SO_SNDTIMEO,(char *)&amp;nTimeOver,sizeof(nTimeOver))==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;setsockopt failed with error %d\n\n&quot;, WSAGetLastError());</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">		//设置SOCK_RAW为SIO_RCVALL，接受数据包</span><br><span class="line">	Result=WSAIoctl(RecSocket,SIO_RCVALL,&amp;dwBufferInLen,sizeof(dwBufferInLen),&amp;dwBufferInLen,sizeof(dwBufferInLen),&amp;dwBytesReturned,NULL,NULL);</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;WSAIoctl failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		closesocket(RecSocket);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">*/</span><br><span class="line">	//进入监听状态</span><br><span class="line">	Result=listen(RecSocket,10);</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;listen failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		closesocket(RecSocket);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//接受客户端请求</span><br><span class="line">	printf(&quot;wait for connect....\n&quot;);</span><br><span class="line">	SenSocket=accept(RecSocket,(PSOCKADDR)&amp;senAddr,&amp;nSize);</span><br><span class="line">	if(SenSocket==INVALID_SOCKET)&#123;</span><br><span class="line">		printf(&quot;listen failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		closesocket(RecSocket);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;connect success!!!\n&quot;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	这里写接收文件的逻辑,目前只是接收字符串，后面再改</span><br><span class="line">	*/</span><br><span class="line">	</span><br><span class="line">	while(recv(SenSocket,buffer,1024,0))&#123;</span><br><span class="line">		printf(&quot;msg is : %s\n&quot;,buffer);</span><br><span class="line">		if(strcmp(buffer,&quot;quit&quot;)==0)&#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		memset(buffer,0,1024);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//关闭套接字</span><br><span class="line">	closesocket(SenSocket);</span><br><span class="line">	closesocket(RecSocket);</span><br><span class="line"></span><br><span class="line">	//释放winstock</span><br><span class="line">	if(WSACleanup()==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;WSACleanup failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;success!!\n&quot;);</span><br><span class="line">	return 1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="发送端代码"><a href="#发送端代码" class="headerlink" title="发送端代码"></a>发送端代码</h3> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"> #include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;stdlib.h&gt;</span><br><span class="line">#include&lt;Winsock2.h&gt;</span><br><span class="line">#pragma comment(lib,&quot;wsock32.lib&quot;)</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">	struct WSAData wsaData;</span><br><span class="line">	int Result;</span><br><span class="line">	SOCKET SenSocket;</span><br><span class="line">	SOCKADDR_IN senAddr;</span><br><span class="line">	char Name[255];</span><br><span class="line">	char inputBuffer[1024]=&#123;0&#125;;</span><br><span class="line">	struct hostent *pHostent;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//初始化</span><br><span class="line">	Result=WSAStartup(MAKEWORD(2,2),&amp;wsaData);</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;WSAStartup failed with error %d\n&quot;,Result);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	//打印wsaData信息</span><br><span class="line">	printf(&quot;wsaData.wVersion=%d\n-----\n&quot;,wsaData.wVersion);</span><br><span class="line">	printf(&quot;wsaData.wHighVersion=%d\n-----\n&quot;,wsaData.wHighVersion);</span><br><span class="line">	printf(&quot;wsaData.szDescription=%s\n-----\n&quot;,wsaData.szDescription);</span><br><span class="line">    printf(&quot;wsaData.szSystemStatus=%s\n-----\n&quot;,wsaData.szSystemStatus);</span><br><span class="line">	printf(&quot;wsaData.iMaxSockets=%d\n-----\n&quot;,wsaData.iMaxSockets);</span><br><span class="line">	printf(&quot;wsaData.iMaxUdpDg=%d\n-----\n&quot;,wsaData.iMaxUdpDg);</span><br><span class="line">	printf(&quot;wsaData.lpVendorInfo=%p\n-----\n&quot;,wsaData.lpVendorInfo);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	//创建原始套接字</span><br><span class="line">	SenSocket=socket(PF_INET,SOCK_STREAM,IPPROTO_TCP);</span><br><span class="line">	if(SenSocket==INVALID_SOCKET)&#123;</span><br><span class="line">		printf(&quot;socket failed with error %d\n&quot;,WSAGetLastError());</span><br><span class="line">		closesocket(SenSocket);</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//初始化sock变量</span><br><span class="line">	Result=gethostname(Name,255);</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;gethostname failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	pHostent=(struct hostent*)malloc(sizeof(struct hostent));</span><br><span class="line">	pHostent=gethostbyname(Name);</span><br><span class="line">	senAddr.sin_family=AF_INET;</span><br><span class="line">	senAddr.sin_port=htons(5555);</span><br><span class="line">	memcpy(&amp;senAddr.sin_addr.S_un.S_addr,pHostent-&gt;h_addr_list[0],pHostent-&gt;h_length);</span><br><span class="line"></span><br><span class="line">	//连接服务器</span><br><span class="line">	Result=connect(SenSocket,(PSOCKADDR)&amp;senAddr,sizeof(senAddr));</span><br><span class="line">	if(Result==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;connect failed with error %d\n&quot;,WSAGetLastError());</span><br><span class="line">		closesocket(SenSocket);</span><br><span class="line">		return 0;	</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/**</span><br><span class="line">	*这里发送数据</span><br><span class="line">	*/</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		printf(&quot;please input some message or input quit to quit:\n&quot;);</span><br><span class="line">		//scanf(&quot;%s&quot;,inputBuffer);</span><br><span class="line">		gets(inputBuffer);</span><br><span class="line">		if(SOCKET_ERROR==send(SenSocket,inputBuffer,strlen(inputBuffer),0))&#123;</span><br><span class="line">			printf(&quot;send failed with error %d\n&quot;,WSAGetLastError());</span><br><span class="line">			return 0;</span><br><span class="line">		&#125;</span><br><span class="line">		printf(&quot;send success!!!\n&quot;);</span><br><span class="line">		if(strcmp(inputBuffer,&quot;quit&quot;)==0)&#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	//关闭socket</span><br><span class="line">	closesocket(SenSocket);</span><br><span class="line"></span><br><span class="line">	//释放winstock</span><br><span class="line">	if(WSACleanup()==SOCKET_ERROR)&#123;</span><br><span class="line">		printf(&quot;WSACleanup failed with error %d\n&quot;, WSAGetLastError());</span><br><span class="line">		return 0;</span><br><span class="line">	&#125;</span><br><span class="line">	printf(&quot;success!!\n&quot;);</span><br><span class="line">	return 1;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C语言/" rel="tag"># C语言</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/12/27/C语言实现DES加密算法/" rel="next" title="C语言实现DES加密算法">
+                <i class="fa fa-chevron-left"></i> C语言实现DES加密算法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZZH</p>
+              <p class="site-description motion-element" itemprop="description">希望能将学习的知识写在这上面</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">28</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#套接字介绍"><span class="nav-number">1.</span> <span class="nav-text">套接字介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-流套接字（SOCK-STREAM）："><span class="nav-number">1.0.1.</span> <span class="nav-text">1.流套接字（SOCK_STREAM）：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数据报套接字（SOCK-DGRAM）：数据报套接字提供了一种无连接的服务。"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.数据报套接字（SOCK_DGRAM）：数据报套接字提供了一种无连接的服务。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-原始套接字（SOCK-RAW）：原始套接字与标准套接字（标准套接字指的是前面介绍的流套接字和数据报套接字）的区别在于："><span class="nav-number">1.0.3.</span> <span class="nav-text">3.原始套接字（SOCK_RAW）：原始套接字与标准套接字（标准套接字指的是前面介绍的流套接字和数据报套接字）的区别在于：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网络编程中各协议首部结构体定义"><span class="nav-number">2.</span> <span class="nav-text">网络编程中各协议首部结构体定义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、IP数据报首部的固定部分中的各字段"><span class="nav-number">2.0.1.</span> <span class="nav-text">1、IP数据报首部的固定部分中的各字段</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-版本-占4位，指IP协议的版本。通信双方使用的IP协议版本必须一致。目前广泛使用的IP协议版本号为4（即IPv4）。"><span class="nav-number">2.0.1.1.</span> <span class="nav-text">(1)版本 占4位，指IP协议的版本。通信双方使用的IP协议版本必须一致。目前广泛使用的IP协议版本号为4（即IPv4）。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-首部长度-占4位，可表示的最大十进制数值是15。请注意，这个字段所表示数的单位是32位字长（1个32位字长是4字节），"><span class="nav-number">2.0.1.2.</span> <span class="nav-text">(2)首部长度 占4位，可表示的最大十进制数值是15。请注意，这个字段所表示数的单位是32位字长（1个32位字长是4字节），</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-区分服务-占8位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。"><span class="nav-number">2.0.1.3.</span> <span class="nav-text">(3)区分服务 占8位，用来获得更好的服务。这个字段在旧标准中叫做服务类型，但实际上一直没有被使用过。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-总长度-总长度指首部和数据之和的长度，单位为字节。总长度字段为16位，因此数据报的最大长度为216-1-65535字节。"><span class="nav-number">2.0.1.4.</span> <span class="nav-text">(4)总长度 总长度指首部和数据之和的长度，单位为字节。总长度字段为16位，因此数据报的最大长度为216-1=65535字节。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-标识-identification-占16位。IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。"><span class="nav-number">2.0.1.5.</span> <span class="nav-text">(5)标识(identification) 占16位。IP软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-标志-flag-占3位，但目前只有2位有意义。"><span class="nav-number">2.0.1.6.</span> <span class="nav-text">(6)标志(flag) 占3位，但目前只有2位有意义。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-占13位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。"><span class="nav-number">2.0.1.7.</span> <span class="nav-text">(7)占13位。片偏移指出：较长的分组在分片后，某片在原分组中的相对位置。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-生存时间-占8位，生存时间字段常用的的英文缩写是TTL-Time-To-Live-，表明是数据报在网络中的寿命。"><span class="nav-number">2.0.1.8.</span> <span class="nav-text">(8)生存时间 占8位，生存时间字段常用的的英文缩写是TTL(Time To Live)，表明是数据报在网络中的寿命。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-协议-占8位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将数据部分上交给哪个处理过程。"><span class="nav-number">2.0.1.9.</span> <span class="nav-text">(9)协议 占8位，协议字段指出此数据报携带的数据是使用何种协议，以便使目的主机的IP层知道应将数据部分上交给哪个处理过程。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-首部检验和-占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，"><span class="nav-number">2.0.1.10.</span> <span class="nav-text">(10)首部检验和 占16位。这个字段只检验数据报的首部，但不包括数据部分。这是因为数据报每经过一个路由器，</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-源地址-占32位。"><span class="nav-number">2.0.1.11.</span> <span class="nav-text">(11)源地址 占32位。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-目的地址-占32位。"><span class="nav-number">2.0.1.12.</span> <span class="nav-text">(12)目的地址 占32位。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP首部"><span class="nav-number">2.1.</span> <span class="nav-text"> IP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP首部"><span class="nav-number">2.2.</span> <span class="nav-text">  TCP首部</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP伪首部"><span class="nav-number">2.3.</span> <span class="nav-text">  TCP伪首部</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#原始套接字编程"><span class="nav-number">3.</span> <span class="nav-text">原始套接字编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Winsock头文件"><span class="nav-number">3.0.1.</span> <span class="nav-text">Winsock头文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接收端代码"><span class="nav-number">3.0.2.</span> <span class="nav-text">接收端代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发送端代码"><span class="nav-number">3.0.3.</span> <span class="nav-text">发送端代码</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZZH</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
